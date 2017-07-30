@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <meta charset="utf-8">
+    
+    <title>c3로 그래프 그리기_02 | shin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="C3로 그래프를 그려보자.1_ 저번 포스팅에는 준비를 했으니 이제 그래프를 그려봅니다.다짜고짜 코드를 가져옵니다. 본문에는 차트가 들어갈 div를 마련.1&amp;lt;div id=&quot;chart&quot;&amp;gt;&amp;lt;/div&amp;gt; 스크립트 넣는 부분에 적당한 예시의 코드를 가져온다.12345678910var chart = c3.generate(&amp;#123;    data:">
+<meta name="keywords" content="html, c3, graph, boolio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c3로 그래프 그리기_02">
+<meta property="og:url" content="https://shin-ae.github.io/2017/07/30/c3-02/index.html">
+<meta property="og:site_name" content="shin">
+<meta property="og:description" content="C3로 그래프를 그려보자.1_ 저번 포스팅에는 준비를 했으니 이제 그래프를 그려봅니다.다짜고짜 코드를 가져옵니다. 본문에는 차트가 들어갈 div를 마련.1&amp;lt;div id=&quot;chart&quot;&amp;gt;&amp;lt;/div&amp;gt; 스크립트 넣는 부분에 적당한 예시의 코드를 가져온다.12345678910var chart = c3.generate(&amp;#123;    data:">
+<meta property="og:image" content="https://shin-ae.github.io/css/images/th_01.jpg">
+<meta property="og:updated_time" content="2017-07-30T14:55:14.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c3로 그래프 그리기_02">
+<meta name="twitter:description" content="C3로 그래프를 그려보자.1_ 저번 포스팅에는 준비를 했으니 이제 그래프를 그려봅니다.다짜고짜 코드를 가져옵니다. 본문에는 차트가 들어갈 div를 마련.1&amp;lt;div id=&quot;chart&quot;&amp;gt;&amp;lt;/div&amp;gt; 스크립트 넣는 부분에 적당한 예시의 코드를 가져온다.12345678910var chart = c3.generate(&amp;#123;    data:">
+<meta name="twitter:image" content="https://shin-ae.github.io/css/images/th_01.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="shin" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-103396291-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">shin</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/categories/blog/">Blog</a>
+                
+                    <a class="main-nav-link" href="/categories/html/">Html</a>
+                
+                    <a class="main-nav-link" href="/design">Design</a>
+                
+                    <a class="main-nav-link" href="/etc">Etc</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories/blog/">Blog</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories/html/">Html</a></td>
+                
+                    <td><a class="main-nav-link" href="/design">Design</a></td>
+                
+                    <td><a class="main-nav-link" href="/etc">Etc</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">shin-ae</h2>
+            <h3 id="title">Web Designer &amp; Developer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Seoul, Korea</span>
+            <!--<a id="follow" target="_blank" href="https://github.com/shin-ae/">팔로우</a>-->
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                6
+                <span>포스트</span>
+            </div>
+            <div class="article-info-block">
+                4
+                <span>태그</span>
+            </div>
+        </div>
+        
+        <!--<div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/shin-ae" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>-->
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-c3-02" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            c3로 그래프 그리기_02
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/30/c3-02/">
+            <time datetime="2017-07-30T12:58:31.000Z" itemprop="datePublished">2017-07-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/html/">html</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h4 id="C3로-그래프를-그려보자"><a href="#C3로-그래프를-그려보자" class="headerlink" title="C3로 그래프를 그려보자."></a>C3로 그래프를 그려보자.</h4><p>1_ 저번 포스팅에는 준비를 했으니 이제 그래프를 그려봅니다.<br>다짜고짜 코드를 가져옵니다. 본문에는 차트가 들어갈 div를 마련.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"chart"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>스크립트 넣는 부분에 적당한 예시의 코드를 가져온다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> chart = c3.generate(&#123;</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">x</span>: <span class="string">'x'</span>,</div><div class="line">        <span class="attr">columns</span>: [</div><div class="line">            [<span class="string">'x'</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">230</span>, <span class="number">300</span>, <span class="number">310</span>],</div><div class="line">            [<span class="string">'data1'</span>, <span class="number">30</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">400</span>, <span class="number">150</span>, <span class="number">250</span>],</div><div class="line">            [<span class="string">'data2'</span>, <span class="number">130</span>, <span class="number">300</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">250</span>, <span class="number">450</span>]</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>전에도 말했지만 c3와 d3는 서버에 올리지 않으면 잘 보이니 않는다. 그래서 바로 에디터에서 서버를 구동해서 볼 수 있는 <code>live server preview</code> 플러그인을 사용했다. (VS code기준)</p>
+</blockquote>
+<p>그러면 이런 모습이 보여지게 된다.<br><img src="/css/images/c3_06.jpg" alt="기본"></p>
+<blockquote>
+<p>아름답다. 반응형에 데이터 위에 마우스가 오버되었을 때 말풍선도 나온다~ㅇㅁㅇ!</p>
+</blockquote>
+<p>2_ 데이터를 적용해보자<br>데이터를 넣는 방법은 아주 쉽다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">    <span class="attr">x</span>: <span class="string">'x'</span>,</div><div class="line">    <span class="attr">url</span>: <span class="string">'data_01.csv'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>데이터를 <code>columns</code>에서 <code>url</code>로 바꾸어주고 저장되어 있는 위치를 써준다. 하지만 이렇게 해서는 아직 그래프가 보여지지 않는다. </p>
+<p>3_x축 정의<br>데이터에 X축이 같이 있기 떄문에 x축을 정의해준다. type에는 여러가지가 있는걸까. 암튼 data 레벨에 x축 범위에 대한 axis속성을 추가한다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">axis: &#123;</div><div class="line">    <span class="attr">x</span>: &#123;</div><div class="line">        <span class="attr">type</span>: <span class="string">'category'</span>,</div><div class="line">     &#125;,</div></pre></td></tr></table></figure></p>
+<p>그러면 이제 이런 모습을 볼 수 있게된다.<br><img src="/css/images/c3_07.jpg" alt="c3로 그래프 만들기"></p>
+<p>4_스타일 바꾸기<br>데이터가 입혀진 그래프를 그렸으니 이제 디자인 파일과 비교하면서 스타일을 다듬으면 된다.<br>일단 데이터 마다 점이 찍혀 있으니 그것을 빼보자.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">point: &#123;</div><div class="line">    <span class="attr">show</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>그리고 x,y축의 선이 너무 진한 것 같으니 css에서 선의 색을 조절해보자.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-x</span> <span class="selector-tag">path</span>,</div><div class="line"><span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-x</span> <span class="selector-tag">line</span> &#123;</div><div class="line">    <span class="attribute">stroke</span>: <span class="number">#ddd</span>;</div><div class="line">&#125;</div><div class="line">        </div><div class="line"><span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-y</span> <span class="selector-tag">path</span>,</div><div class="line"><span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-y</span> <span class="selector-tag">lines</span> &#123;</div><div class="line">    <span class="attribute">stroke</span>: <span class="number">#ddd</span>;</div><div class="line">&#125;</div><div class="line">        </div><div class="line"><span class="selector-class">.c3-ygrid-line</span><span class="selector-class">.gridGray</span> <span class="selector-tag">line</span> &#123;</div><div class="line">    <span class="attribute">stroke</span>: <span class="number">#ddd</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>데이터 컬러의 색도 바꿀 수 있다. 특정 데이터의 색을 바꿀 수 있지만 간단하게 패턴으로 바꿔본다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">color: &#123;</div><div class="line">    <span class="attr">pattern</span>: [<span class="string">'#ff5f00'</span>, <span class="string">'#ffe082'</span>, <span class="string">'#80deeb'</span>, <span class="string">'#c4e0a6'</span>, <span class="string">'#bdaba3'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>여기까지 하면 이런 데이터를 볼 수 있다.<br><img src="/css/images/c3_08.jpg" alt="스타일 바꾸기"></p>
+<p>5_ 마무리, 포멧 정리<br>이제 거의 다 한 것 같다. 마지막으로 x축과 y축 범위? 단위를 정리해주자.<br>y축의 단위가 %이기때문에 %를 추가해보자.<code>axis</code>아래에 x다음에 추가해주면 된다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> y: &#123;</div><div class="line">    <span class="attr">tick</span>: &#123;</div><div class="line">        <span class="attr">format</span>: <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> d + <span class="string">"%"</span>;</div><div class="line">         &#125;</div><div class="line">    &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>그리고 x축의 날짜도 다 보여 줄 필요가 없으니 줄일 수 있다. <code>axis</code>의 x에 추가하면 된다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tick: &#123;</div><div class="line">    count: 7</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>마지막으로 y축의 그리드를 추가해줘야 하는데 그리드는 이렇게 추가할 수 있다.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">grid: &#123;</div><div class="line">    <span class="attr">y</span>: &#123;</div><div class="line">        <span class="attr">show</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="/css/images/c3_09.jpg" alt="이건뭐지"><br>그리드가 점선인데다가 여러개가 있어서 상당히 지저분해 보인다.<br>결국 특정 y값을 정해서 그 값의 그리드만 표현하기로.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">grid: &#123;</div><div class="line">    <span class="attr">y</span>: &#123;</div><div class="line">        <span class="attr">lines</span>: [&#123;</div><div class="line">            <span class="attr">value</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">class</span>: <span class="string">'gridGray'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">value</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">class</span>: <span class="string">'gridGray'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">value</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">class</span>: <span class="string">'gridGray'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>이렇게 되면 그리고자 했던 그래프를 만날 수 있다.<br><img src="/css/images/c3_10.jpg" alt="완성"></p>
+<p>최종 코드는<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"ko"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">         <span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-x</span> <span class="selector-tag">path</span>,</div><div class="line">        <span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-x</span> <span class="selector-tag">line</span> &#123;</div><div class="line">            <span class="attribute">stroke</span>: <span class="number">#ddd</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-y</span> <span class="selector-tag">path</span>,</div><div class="line">        <span class="selector-class">.c3</span> <span class="selector-class">.c3-axis-y</span> <span class="selector-tag">lines</span> &#123;</div><div class="line">            <span class="attribute">stroke</span>: <span class="number">#ddd</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="selector-class">.c3-ygrid-line</span><span class="selector-class">.gridGray</span> <span class="selector-tag">line</span> &#123;</div><div class="line">            <span class="attribute">stroke</span>: <span class="number">#ddd</span>;</div><div class="line">        &#125; </div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"chart"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="keyword">var</span> chart = c3.generate(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">x</span>: <span class="string">'x'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'data_01.csv'</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">axis</span>: &#123;</div><div class="line">                <span class="attr">x</span>: &#123;</div><div class="line">                    <span class="attr">type</span>: <span class="string">'category'</span>,</div><div class="line">                    <span class="attr">tick</span>: &#123;</div><div class="line">                        <span class="attr">count</span>: <span class="number">7</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">y</span>: &#123;</div><div class="line">                    <span class="attr">tick</span>: &#123;</div><div class="line">                        <span class="attr">format</span>: <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">                            <span class="keyword">return</span> d + <span class="string">"%"</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">point</span>: &#123;</div><div class="line">                <span class="attr">show</span>: <span class="literal">false</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">color</span>: &#123;</div><div class="line">                <span class="attr">pattern</span>: [<span class="string">'#ff5f00'</span>, <span class="string">'#ffe082'</span>, <span class="string">'#80deeb'</span>, <span class="string">'#c4e0a6'</span>, <span class="string">'#bdaba3'</span>]</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">grid</span>: &#123;</div><div class="line">                <span class="attr">y</span>: &#123;</div><div class="line">                    <span class="attr">lines</span>: [&#123;</div><div class="line">                        <span class="attr">value</span>: <span class="number">0</span>,</div><div class="line">                        <span class="attr">class</span>: <span class="string">'gridGray'</span></div><div class="line">                    &#125;, &#123;</div><div class="line">                        <span class="attr">value</span>: <span class="number">1</span>,</div><div class="line">                        <span class="attr">class</span>: <span class="string">'gridGray'</span></div><div class="line">                    &#125;, &#123;</div><div class="line">                        <span class="attr">value</span>: <span class="number">2</span>,</div><div class="line">                        <span class="attr">class</span>: <span class="string">'gridGray'</span></div><div class="line">                    &#125;]</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2017/07/30/c3-02/" data-id="cj5qqv0sb0004v4ubdpp1rgcc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/07/30/c3-02/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/07/30/c3-02/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/07/30/c3/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">이전 글</strong>
+            <div class="article-nav-title">c3로 그래프 그리기_01</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/30/c3-02/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://shin-ae.github.io/css/images/th_01.jpg)" alt="c3로 그래프 그리기_02" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
+                            <p class="item-title"><a href="/2017/07/30/c3-02/" class="title">c3로 그래프 그리기_02</a></p>
+                            <p class="item-date"><time datetime="2017-07-30T12:58:31.000Z" itemprop="datePublished">2017-07-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/30/c3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://shin-ae.github.io/css/images/th_01.jpg)" alt="c3로 그래프 그리기_01" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
+                            <p class="item-title"><a href="/2017/07/30/c3/" class="title">c3로 그래프 그리기_01</a></p>
+                            <p class="item-date"><time datetime="2017-07-30T00:54:23.000Z" itemprop="datePublished">2017-07-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/26/markDown/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://shin-ae.github.io/css/images/th_01.jpg)" alt="마크다운문법" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
+                            <p class="item-title"><a href="/2017/07/26/markDown/" class="title">마크다운문법</a></p>
+                            <p class="item-date"><time datetime="2017-07-26T12:39:26.000Z" itemprop="datePublished">2017-07-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/17/Hexo-01/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blog/">blog</a></p>
+                            <p class="item-title"><a href="/2017/07/17/Hexo-01/" class="title">Hexo 글쓰기</a></p>
+                            <p class="item-date"><time datetime="2017-07-17T10:05:43.000Z" itemprop="datePublished">2017-07-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/16/Hexo-start/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blog/">blog</a></p>
+                            <p class="item-title"><a href="/2017/07/16/Hexo-start/" class="title">Hexo 시작하기</a></p>
+                            <p class="item-date"><time datetime="2017-07-16T13:05:42.000Z" itemprop="datePublished">2017-07-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Shinae<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://shin-ae.github.io/2017/07/30/c3-02/';
+        
+        this.page.identifier = 'c3-02';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
