@@ -168,11 +168,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                14
+                15
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                12
+                13
                 <span>태그</span>
             </div>
         </div>
@@ -221,6 +221,157 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-c3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/30/c3/">c3로 그래프 그리기_01</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/30/c3/">
+            <time datetime="2017-07-30T00:54:23.000Z" itemprop="datePublished">2017-07-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/html/">html</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>현재 <code>boolio</code>라는 로보어드바이저의 전체적인 디자인을 담당하고 있다.<br>불리오는 간단히 펀드 자문을 한다고 말할 수 있는데 한달에 한번씩 추천 펀드를 내놓는다.<br>그것이 보고서의 형태로 나가는데 그 안에는 한달 동안의 수익, 추천 펀드, 일정 등이 같이 나가게 된다. </p>
+<p>여하튼, 인디자인으로 매달 작업하던 것을 이제는 모바일과 웹 서비스로 자동화 시키는 프로젝트를 진행하고 있다. 그 서비스에 그래프가 존재하는 것은 당연했고, 일러스트로 그리던 그래프를 웹에 옮기는 작업이 필요했다.<br>여태 <a href="https://d3js.org/" target="_blank" rel="external">D3.js</a>를 배우면서 그래프 그리는 연습을 했지만 D3는 자율도가 높은 반면 자바스크립트를 모르는 사람에게는 어느정도의 진입장벽이 존재.</p>
+<blockquote>
+<p>D3로 시도는 해보았지만 그래프가 잘 나타나지 않았다. 거기에 반응형으로 디자인을 해야했기 때문에 난감했던 상황.</p>
+</blockquote>
+<p>그 와중에 <a href="http://c3js.org/" target="_blank" rel="external">C3.js</a>라는 D3기반의 좀 더 쉬운 라이브러리를 발견. </p>
+<h4 id="썰이-길었다-이제-준비를-시작하자"><a href="#썰이-길었다-이제-준비를-시작하자" class="headerlink" title="썰이 길었다. 이제 준비를 시작하자!"></a>썰이 길었다. 이제 준비를 시작하자!</h4><p>1_ <a href="http://c3js.org/" target="_blank" rel="external">C3.js</a>를 살펴보자<br>c3는 나같은 사람들을 위해서 굉장히 쉽다. 기본이 <code>반응형</code>이고 디자인도 깔끔하게 되어있어 많이 손댈 필요도 없다. 다만 d3와 마찮가지로 서버에 올려야 확인이 가능하다는 단점이 있는데 이 부분은 데이터를 다른 파일에서 불러오지 않고 내부에 입력하면 확인 가능하다. </p>
+<p><img src="/css/images/c3_01.JPG" alt="c3.js의 index화면"></p>
+<p>인덱스에서 보면 기본적으로 제공하는 디자인을 볼 수 있다. 깔끔하다.<br>메뉴의 examples에서 보면 다양한 예시의 그래프를 볼 수 있다. </p>
+<p><img src="/css/images/c3_02.JPG" alt="c3.examples"></p>
+<p>c3에서 기본적으로 제공하고 있는 데이터들. 하나하나 들여다 보면 참 심플하고 예쁘다.<br>여기에서 내가 필요했던 것은 라인 그래프! 기본적으로 디자인 파일이 있다면 쓰기 더 쉬워진다. </p>
+<p><img src="/css/images/c3_03.JPG" alt="일러스트로 제작된 그래프"></p>
+<p>나는 여태까지 썼던 그래프의 디자인(일러스트로 제작)이 있었기 때문에 그 그래프를 구현해 보기로 했다. </p>
+<p>2_ 데이터 정리<br>한번 쓰고 말것이 아니라 매달 써야하기 때문에 나는 데이터 파일을 넣을 수 있는 포맷이 필요했다.<br>일단, 내가 가진 데이터는 엑셀로 있는 파일이었는데 엑셀 파일에서 제일 쉽게 변형할 수 있는 데이터 파일은 <code>.CSV</code>파일이다. </p>
+<p><img src="/css/images/c3_04.JPG" alt="엑셀파일"></p>
+<p>아래로 데이터가 나열되는 형태의 엑셀파일. 다른이름 으로 저장을 누르고 <code>csv파일로 저장</code>을 누른다. </p>
+<p><img src="/css/images/c3_05.JPG" alt="csv파일로 저장"></p>
+<p>그러면 들어갈 데이터 형태는 준비가 되었다. </p>
+<p>3_ 그럼 c3를 코딩해보자.<br>c3는 d3를 기반으로 하고 있기 때문에 d3아래에 위치해야한다. 각 홈페이지에서 받아서 import시켜준다. c3는 스타일시트도 있기 때문에 그것도 받아서 같이 넣어준다.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Load c3.css --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"/path/to/c3.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Load d3.js and c3.js --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/d3.v3.min.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/c3.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>이제 준비는 다 끝났으니 다음은 진짜 c3로 그래프를 그리는 작업을 해보자!<br>커밍쑨!</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2017/07/30/c3/" data-id="cj71x8u49000cu0ubm1lhigs3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/07/30/c3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/07/30/c3/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-markDown" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -443,7 +594,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/26/markDown/" data-id="cj6m8hrcl000rw8ubgsrub3e1" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/26/markDown/" data-id="cj71x8u4o000qu0ubwzrnybom" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -588,7 +739,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/17/Hexo-01/" data-id="cj6m8hrba0001w8ubn1mm0bz4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/17/Hexo-01/" data-id="cj71x8u2i0000u0ub8tdr2jyd" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -732,7 +883,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/16/Hexo-start/" data-id="cj6m8hrbq0004w8ubnmorfrbn" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/16/Hexo-start/" data-id="cj71x8u3t0004u0ubwodx33pw" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -862,7 +1013,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/16/hello-world/" data-id="cj6m8hrc5000hw8ubt9ve59yo" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/16/hello-world/" data-id="cj71x8u4o000iu0ub8gpjgpsq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -957,6 +1108,25 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/09/01/es6-02/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634)" alt="es6-02" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
+                            <p class="item-title"><a href="/2017/09/01/es6-02/" class="title">es6-02</a></p>
+                            <p class="item-date"><time datetime="2017-09-01T11:36:42.000Z" itemprop="datePublished">2017-09-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/08/21/es6-01/" class="thumbnail">
     
     
@@ -1030,25 +1200,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/08/08/zeplin-03/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/design/">design</a></p>
-                            <p class="item-title"><a href="/2017/08/08/zeplin-03/" class="title">제플린의 숫자가 이상하다!</a></p>
-                            <p class="item-date"><time datetime="2017-08-08T12:26:28.000Z" itemprop="datePublished">2017-08-08</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1058,7 +1209,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -1067,7 +1218,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -1076,7 +1227,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1085,7 +1236,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
+            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
         </div>
     </div>
 

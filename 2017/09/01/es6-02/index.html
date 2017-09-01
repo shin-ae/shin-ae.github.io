@@ -3,19 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Hexo 글쓰기 | shin</title>
+    <title>es6-02 | shin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="헥소 서버 구동헥소는 내장서버를 구동하여 작업물을 확인할 수 있다.방법은 다음 명령어를 터미널에 입력1hexo s s = server를 줄인 명령어로 같은 동작을 수행한다.그러면12INFO  Start processingINFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop. 라는 결과를">
-<meta name="keywords" content="hexo, 블로그 만들기, 글쓰기">
+    <meta name="description" content="for…in 루프for...in루프는 객체의 프로퍼티에 루프를 실행하도록 설계된 루프 12for(variable in object)    statement 이건 es6에 새로 추가된 문법은 아니지만 내가 몰랐었으니 추가 12345const player = &amp;#123; name : &apos;Thomas&apos;, rank : &apos;Midshipman&apos;, age:25&amp;#125;">
+<meta name="keywords" content="es6, for-in, for-of">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 글쓰기">
-<meta property="og:url" content="https://shin-ae.github.io/2017/07/17/Hexo-01/index.html">
+<meta property="og:title" content="es6-02">
+<meta property="og:url" content="https://shin-ae.github.io/2017/09/01/es6-02/index.html">
 <meta property="og:site_name" content="shin">
-<meta property="og:description" content="헥소 서버 구동헥소는 내장서버를 구동하여 작업물을 확인할 수 있다.방법은 다음 명령어를 터미널에 입력1hexo s s = server를 줄인 명령어로 같은 동작을 수행한다.그러면12INFO  Start processingINFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop. 라는 결과를">
-<meta property="og:updated_time" content="2017-07-17T10:35:13.834Z">
+<meta property="og:description" content="for…in 루프for...in루프는 객체의 프로퍼티에 루프를 실행하도록 설계된 루프 12for(variable in object)    statement 이건 es6에 새로 추가된 문법은 아니지만 내가 몰랐었으니 추가 12345const player = &amp;#123; name : &apos;Thomas&apos;, rank : &apos;Midshipman&apos;, age:25&amp;#125;">
+<meta property="og:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
+<meta property="og:updated_time" content="2017-09-01T13:34:45.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 글쓰기">
-<meta name="twitter:description" content="헥소 서버 구동헥소는 내장서버를 구동하여 작업물을 확인할 수 있다.방법은 다음 명령어를 터미널에 입력1hexo s s = server를 줄인 명령어로 같은 동작을 수행한다.그러면12INFO  Start processingINFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop. 라는 결과를">
+<meta name="twitter:title" content="es6-02">
+<meta name="twitter:description" content="for…in 루프for...in루프는 객체의 프로퍼티에 루프를 실행하도록 설계된 루프 12for(variable in object)    statement 이건 es6에 새로 추가된 문법은 아니지만 내가 몰랐었으니 추가 12345const player = &amp;#123; name : &apos;Thomas&apos;, rank : &apos;Midshipman&apos;, age:25&amp;#125;">
+<meta name="twitter:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
     
 
     
@@ -225,7 +227,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-Hexo-01" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-es6-02" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -233,7 +235,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Hexo 글쓰기
+            es6-02
         </h1>
     
 
@@ -242,8 +244,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/17/Hexo-01/">
-            <time datetime="2017-07-17T10:05:43.000Z" itemprop="datePublished">2017-07-17</time>
+        <a href="/2017/09/01/es6-02/">
+            <time datetime="2017-09-01T11:36:42.000Z" itemprop="datePublished">2017-09-01</time>
         </a>
     </div>
 
@@ -251,13 +253,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/blog/">blog</a>
+        <a class="article-category-link" href="/categories/html/">html</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a>
+        <a class="tag-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a>
     </div>
 
                     </div>
@@ -268,20 +270,23 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h3 id="헥소-서버-구동"><a href="#헥소-서버-구동" class="headerlink" title="헥소 서버 구동"></a>헥소 서버 구동</h3><p>헥소는 내장서버를 구동하여 작업물을 확인할 수 있다.<br>방법은 다음 명령어를 터미널에 입력<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure></p>
-<p>s = server를 줄인 명령어로 같은 동작을 수행한다.<br>그러면<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INFO  Start processing</div><div class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</div></pre></td></tr></table></figure></p>
-<p>라는 결과를 받을 수 있을 것이다.<br>인터넷 브라우저에서 저 주소를 입력하면 블로그 확인이 가능하다. 서버의 구동을 멈추고 싶다면 터미널에서 Ctrl+c를 두번 누르면 간단하게 서버 구동을 끝낼 수 있다. </p>
-<h3 id="글쓰기"><a href="#글쓰기" class="headerlink" title="글쓰기"></a>글쓰기</h3><p>헥소에서는 글을 만들면서 내용을 작성할 수는 없는 것 같다. 우선 터미널에서 새 파일을 생성하면<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;포스트명&quot;</div></pre></td></tr></table></figure></p>
-<p><code>source/_posts</code> 에 <code>포스트명</code>으로 만들어진 파일이 생성되는 것을 알 수 있다.<br>헥소에서는 초안 작성이라는 기능도 제공을 하는데 지금 당장 발행하고 싶지 않은 문서는<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new draft &quot;포스트명&quot;</div></pre></td></tr></table></figure></p>
-<p>으로 만들 수 있다. 이 문서는 <code>source/_drafts</code>안에 생성된다. 이 초안 문서들은 나중에<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo publish &quot;포스트명&quot;</div></pre></td></tr></table></figure></p>
-<p>으로 _posts폴더로 옮겨 보여지게 할 수 있다. </p>
-<h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><p>내가 포스팅을 끝낼때마다 하는 작업이다.<br>단어 뜻으로는 generate = 생성하다, deploy = 배치하다 인데 git에 연동이 되어 있다면 편하게 쓸 수 있는 기능이라는 것만 알겠다. </p>
-<p>우선, git을 연동하는 파일은 <code>_config.yml</code>로 최 상단에 위치한 파일이다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git </div><div class="line">  repo: https://github.com/shin-ae/shin-ae.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>이렇게 설정하고, 만약  deploer 플러그인이 없어서 작동되지 않는다면<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save hexo-deployer-git</div></pre></td></tr></table></figure></p>
-<p>을 사용하여 플러그인을 설치하자.<br>그리고 git에 public파일을 업로드 해준다. </p>
-<p>명령어는<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>g = generate, d = deploy로 간단하게 줄여서 쓸 수 있다.  </p>
+            <h3 id="for…in-루프"><a href="#for…in-루프" class="headerlink" title="for…in 루프"></a>for…in 루프</h3><p><code>for...in</code>루프는 객체의 프로퍼티에 루프를 실행하도록 설계된 루프</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(variable <span class="keyword">in</span> object)</div><div class="line">    statement</div></pre></td></tr></table></figure>
+<p>이건 es6에 새로 추가된 문법은 아니지만 내가 몰랐었으니 추가</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> player = &#123; <span class="attr">name</span> : <span class="string">'Thomas'</span>, <span class="attr">rank</span> : <span class="string">'Midshipman'</span>, <span class="attr">age</span>:<span class="number">25</span>&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> player)&#123;</div><div class="line">    <span class="keyword">if</span>(!player.hasOwnProperty(prop)) <span class="keyword">continue</span>;</div><div class="line">    <span class="built_in">console</span>.log(prop + <span class="string">':'</span> + player[prop]); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>결과는</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"name:Thomas"</span></div><div class="line"><span class="string">"rank:Midshipman"</span></div><div class="line"><span class="string">"age:25"</span></div></pre></td></tr></table></figure>
+<p>여기에서 player.hasOwnProperty를 호출할 필요는 없지만 이 메서드를 생략하면 에러가 생기기 쉽다고 한다. 나중에 다시 보는걸로… </p>
+<h3 id="for…of-루프"><a href="#for…of-루프" class="headerlink" title="for…of 루프"></a>for…of 루프</h3><p>for…of 루프는 ES6에 새로생긴 반복문.<br>컬렉션 요소에 루프를 실행한다고 한다. 배열은 물론 이터러블(iterable)객체에 모두 사용이 가능하다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(variable <span class="keyword">of</span> object)</div><div class="line">    statement</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> hand = [randFace(), randFace(), randFace()];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> face <span class="keyword">of</span> hand)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`you rolled...<span class="subst">$&#123;face&#125;</span>!`</span>);</div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure>
+<p>for…of는 배열에 루프를 실행해야 하지만 각 요소의 인덱스를 알 필요는 없을때 알맞음. 인덱스를 알아야 하면 일반적인  <code>for</code>루프를 이용하는 것으로</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> hand = [randFace(), randFace(), randFace()];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;hand.length; i++)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`ROLL <span class="subst">$&#123;i+<span class="number">1</span>&#125;</span> : <span class="subst">$&#123;hand[i]&#125;</span>`</span>);</div></pre></td></tr></table></figure>
+<p>책에서는 이렇게 나왔는데 이론적으로 나와서 잘 이해가 되지 않는다.<br>예제를 찾아보자. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iterable = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 10</span></div><div class="line"><span class="comment">// 20</span></div><div class="line"><span class="comment">// 30</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iterable = <span class="string">"boo"</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// "b"</span></div><div class="line"><span class="comment">// "o"</span></div><div class="line"><span class="comment">// "o"</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iterable = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">"a"</span>, <span class="number">1</span>], [<span class="string">"b"</span>, <span class="number">2</span>], [<span class="string">"c"</span>, <span class="number">3</span>]]);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(entry);</div><div class="line">&#125;</div><div class="line"><span class="comment">// [a, 1]</span></div><div class="line"><span class="comment">// [b, 2]</span></div><div class="line"><span class="comment">// [c, 3]</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>등등 다양하게 쓸 수 있다고 한다. 더 많은 예제는 아래 링크에서 볼 수 있다.<br><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="external">MDN</a></p>
 
         
         </div>
@@ -292,7 +297,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/17/Hexo-01/" data-id="cj71x8u2i0000u0ub8tdr2jyd" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/01/es6-02/" data-id="cj71x8u3t0005u0ubtf62lreq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -360,7 +365,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="https://shin-ae.github.io/2017/07/17/Hexo-01/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/07/17/Hexo-01/">댓글</a>
+        <a href="https://shin-ae.github.io/2017/09/01/es6-02/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/09/01/es6-02/">댓글</a>
     
 
         </footer>
@@ -369,19 +374,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/07/26/markDown/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">다음 글</strong>
-            <div class="article-nav-title">
-                
-                    마크다운문법
-                
-            </div>
-        </a>
     
-    
-        <a href="/2017/07/16/Hexo-start/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/08/21/es6-01/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">이전 글</strong>
-            <div class="article-nav-title">Hexo 시작하기</div>
+            <div class="article-nav-title">es6-01</div>
         </a>
     
 </nav>
@@ -581,9 +577,9 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://shin-ae.github.io/2017/07/17/Hexo-01/';
+            this.page.url = 'https://shin-ae.github.io/2017/09/01/es6-02/';
         
-        this.page.identifier = 'Hexo-01';
+        this.page.identifier = 'es6-02';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
