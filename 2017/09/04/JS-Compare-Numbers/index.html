@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>태그: hexo, 블로그 만들기, 글쓰기 | shin</title>
+    <title>JS Compare Numbers | shin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="shin">
-<meta property="og:url" content="https://shin-ae.github.io/tags/hexo-블로그-만들기-글쓰기/index.html">
+    <meta name="description" content="NaN은 무엇과도 같지 않음NaN값은 그 자신을 포함하여 무엇과도 같지 않다.  12NaN === NaN   //falseNaN == NaN   //false 그럼 어떻게 숫자가 NaN인지 알아보느냐!inNaN(x)함수를 사용하면 된다. isNaN 함수는 x가 NaN일때 true를 반환한다. 12let NotNaN = &quot;string&quot;;isNaN(NotNan">
+<meta name="keywords" content="javascript, compare, numbers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS Compare Numbers">
+<meta property="og:url" content="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/index.html">
 <meta property="og:site_name" content="shin">
+<meta property="og:description" content="NaN은 무엇과도 같지 않음NaN값은 그 자신을 포함하여 무엇과도 같지 않다.  12NaN === NaN   //falseNaN == NaN   //false 그럼 어떻게 숫자가 NaN인지 알아보느냐!inNaN(x)함수를 사용하면 된다. isNaN 함수는 x가 NaN일때 true를 반환한다. 12let NotNaN = &quot;string&quot;;isNaN(NotNan">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736401_960_720.png">
+<meta property="og:updated_time" content="2017-09-03T16:05:01.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shin">
+<meta name="twitter:title" content="JS Compare Numbers">
+<meta name="twitter:description" content="NaN은 무엇과도 같지 않음NaN값은 그 자신을 포함하여 무엇과도 같지 않다.  12NaN === NaN   //falseNaN == NaN   //false 그럼 어떻게 숫자가 NaN인지 알아보느냐!inNaN(x)함수를 사용하면 된다. isNaN 함수는 x가 NaN일때 true를 반환한다. 12let NotNaN = &quot;string&quot;;isNaN(NotNan">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736401_960_720.png">
     
 
     
@@ -220,50 +227,174 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#hexo, 블로그 만들기, 글쓰기</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-JS-Compare-Numbers" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/07/17/Hexo-01/">Hexo 글쓰기</a>
+        <h1 class="article-title" itemprop="name">
+            JS Compare Numbers
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/17/Hexo-01/">
-            <time datetime="2017-07-17T10:05:43.000Z" itemprop="datePublished">2017-07-17</time>
+        <a href="/2017/09/04/JS-Compare-Numbers/">
+            <time datetime="2017-09-03T15:06:56.000Z" itemprop="datePublished">2017-09-04</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/blog/">blog</a>
+        <a class="article-category-link" href="/categories/html/">html</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a>
+        <a class="tag-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="NaN은-무엇과도-같지-않음"><a href="#NaN은-무엇과도-같지-않음" class="headerlink" title="NaN은 무엇과도 같지 않음"></a>NaN은 무엇과도 같지 않음</h3><p>NaN값은 그 자신을 포함하여 무엇과도 같지 않다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>   <span class="comment">//false</span></div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>   <span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>그럼 어떻게 숫자가 NaN인지 알아보느냐!<br><code>inNaN(x)</code>함수를 사용하면 된다. isNaN 함수는 x가 NaN일때 true를 반환한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> NotNaN = <span class="string">"string"</span>;</div><div class="line"><span class="built_in">isNaN</span>(NotNan);   <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<hr>
+<h3 id="소수-비교하기"><a href="#소수-비교하기" class="headerlink" title="소수 비교하기"></a>소수 비교하기</h3><p><code>자바스크립트의 숫자는 모두 더블형식</code><br>더블형식은 실수를 말하는데 실수는 0.3000000000000000000000004처럼 작은 값을 포함하기도 한다. 그렇기 때문에 실수를 비교할 때에는 Number.EPSILON의 숫자형 상수를 이용하여 비교한다고 한다. </p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON" title="Number.EPSILON" target="_blank" rel="external">MDN</a>에서는 </p>
+<blockquote>
+<p>Number.EPSILON 속성(property)은 Number 형으로 표현될 수 있는 1과 1보다 큰 값 중에서 가장 작은 값의, 차입니다.</p>
+</blockquote>
+<p>라고 설명하고 있다. 두개의 더블(실수)형식이 같다고 할 수 있을 만큼 가까운 숫자인지 판단할때 일반적으로 사용하는 방법이라고 하니 걍 익혀두는게 좋을 듯</p>
+<p>아래 예시로 좀 더 자시헤 보도록 할까…<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">    n += <span class="number">0.1</span>;</div><div class="line">    <span class="keyword">if</span>(n === <span class="number">0.3</span>) <span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Stopped at <span class="subst">$&#123;n&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
+<p>이렇게 하면 0.3에 멈출거라고 생각하지만 컴퓨터는 값을 내놓지 못하고 끝없이 돌아갔다. 창 멈춤…ㄷㄷㄷ</p>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ETBUuDySjDQXENuviwGUhlN1Z8fa-j0ttx9_9Ax44ppnMQBs" alt="ㅎㄷㄷ"></p>
+<p>그래서 Number.EPSILON과 관계연산식을 써서 <code>느슨하게</code> 비교해야함.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">    n += <span class="number">0.1</span>;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(n<span class="number">-0.3</span>) &lt; <span class="built_in">Number</span>.EPSILON) <span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Stopped at <span class="subst">$&#123;n&#125;</span>`</span>);   <span class="comment">//Stopped at0.30000000000000004</span></div></pre></td></tr></table></figure>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cj74xhrv40001vsub0h9qu174" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/09/01/js-pattern-01/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">이전 글</strong>
+            <div class="article-nav-title">js pattern 01</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -445,11 +576,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/';
+        
+        this.page.identifier = 'JS-Compare-Numbers';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
