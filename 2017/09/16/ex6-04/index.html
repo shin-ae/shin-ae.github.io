@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>태그: zeplin, 제플린, 오류, 대지, PsCC | shin</title>
+    <title>es6에서 추가된 함수 기능 | shin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="shin">
-<meta property="og:url" content="https://shin-ae.github.io/tags/zeplin-제플린-오류-대지-PsCC/index.html">
+    <meta name="description" content="es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다! 함수는 기본적으로 이렇게 쓰인다.  1234function hello()&amp;#123;    return &quot;Hello world!&quot;;&amp;#125;hello();   //&quot;Hello world!&quot; 자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징">
+<meta name="keywords" content="es6, function, 매개변수">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6에서 추가된 함수 기능">
+<meta property="og:url" content="https://shin-ae.github.io/2017/09/16/ex6-04/index.html">
 <meta property="og:site_name" content="shin">
+<meta property="og:description" content="es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다! 함수는 기본적으로 이렇게 쓰인다.  1234function hello()&amp;#123;    return &quot;Hello world!&quot;;&amp;#125;hello();   //&quot;Hello world!&quot; 자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징">
+<meta property="og:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
+<meta property="og:updated_time" content="2017-09-15T18:58:17.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shin">
+<meta name="twitter:title" content="es6에서 추가된 함수 기능">
+<meta name="twitter:description" content="es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다! 함수는 기본적으로 이렇게 쓰인다.  1234function hello()&amp;#123;    return &quot;Hello world!&quot;;&amp;#125;hello();   //&quot;Hello world!&quot; 자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징">
+<meta name="twitter:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
     
 
     
@@ -220,50 +227,188 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#zeplin, 제플린, 오류, 대지, PsCC</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-ex6-04" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/08/08/zeplin-01/">제플린에 Export 되지 않는다.</a>
+        <h1 class="article-title" itemprop="name">
+            es6에서 추가된 함수 기능
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/08/08/zeplin-01/">
-            <time datetime="2017-08-08T11:24:39.000Z" itemprop="datePublished">2017-08-08</time>
+        <a href="/2017/09/16/ex6-04/">
+            <time datetime="2017-09-15T16:32:50.000Z" itemprop="datePublished">2017-09-16</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/design/">design</a>
+        <a class="article-category-link" href="/categories/html/">html</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a>
+        <a class="tag-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다!</p>
+<p>함수는 기본적으로 이렇게 쓰인다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello world!"</span>;</div><div class="line">&#125;</div><div class="line">hello();   <span class="comment">//"Hello world!"</span></div></pre></td></tr></table></figure>
+<p>자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징을 가지고 있는 유연한 언어. 그렇기 때문에 함수를 변수에 할당하여 다른 이름으로 함수를 호출할 수도 있다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> f = hello;</div><div class="line">f();   <span class="comment">//"Hello world!"</span></div></pre></td></tr></table></figure>
+<p>또한 함수를 객체 프로퍼티나 배열요소에도 할당 할 수 있다. </p>
+<hr>
+<p>함수를 호출하면서 정보를 전달 할 떄, 즉 함수에 정보를 전달하려면 매개변수를 이용한다. 매개변수는 함수가 호출되기 전에는 존재하지 않는다는 점을 제외하면 일반적인 변수와 마찮가지.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">avg</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div></pre></td></tr></table></figure>
+<p>자바스크립트에서는 다른 함수들 과는 다르게 매개변수 갯수와 상관없이 몇개의 매개변수를 전달해도 됨. 정해진 매개 변수에 값을 제공하지 않으면 암시적으로 <code>undefined</code>가 할당된다</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`f: x=<span class="subst">$&#123;x&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line">f();   <span class="comment">//"f: x=undefined"</span></div></pre></td></tr></table></figure>
+<h3 id="ES6에-추가된-매개변수-기본값-지정하기"><a href="#ES6에-추가된-매개변수-기본값-지정하기" class="headerlink" title="ES6에 추가된 매개변수 기본값 지정하기"></a>ES6에 추가된 매개변수 기본값 지정하기</h3><p>일반적으로 매개변수 값을 지정하지 않으면 위에처럼 undefined가 값으로 할당된다. ES6에서는 기본값을 지정 할 수 있게 되었다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a,b = <span class="string">"blabla"</span>,c=<span class="number">3</span></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;a&#125;</span> - <span class="subst">$&#123;b&#125;</span> - <span class="subst">$&#123;c&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line">f(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>);   <span class="comment">//"5 - 6 - 7"</span></div><div class="line">f(<span class="number">5</span>, <span class="number">6</span>);   <span class="comment">//"5 - 6 - 3"</span></div><div class="line">f(<span class="number">5</span>);   <span class="comment">//"5 - blabla - 3"</span></div><div class="line">f();   <span class="comment">//"undefined - blabla - 3"</span></div></pre></td></tr></table></figure>
+<p>b가 blabla가 된 것은 알겠는데 a도 같이 지정했음에도 불구하고 <code>undefined</code>나오는 것은 왜 그런 것인지 잘 모르겠습니당!</p>
+<p>###화살표 함수<br>ES6에서 새로만든 화살표 표기법은 <code>function</code>이라는 단어와 중괄호 숫자를 줄이려고 고안된 단축 문법입니다. </p>
+<p>화살표 문법은 다음과 같은 특징을 가진다.</p>
+<ol>
+<li>function을 샐략해도 됨</li>
+<li>함수에 매개변수가 단 하나 뿐이라면 괄호(())도 생략할 수 있음</li>
+<li>함수 바디가 표현식 하나라면 중괄호와 return문도 생략할 수 있다. </li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> f1 = fuction() &#123;<span class="keyword">return</span> <span class="string">"hello"</span>;&#125;</div><div class="line"><span class="comment">//또는</span></div><div class="line"><span class="keyword">const</span> f1 = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">"hello"</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;<span class="keyword">return</span> <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>;&#125;</div><div class="line"><span class="comment">//또는</span></div><div class="line"><span class="keyword">const</span> f2 = <span class="function"><span class="params">name</span> =&gt;</span> <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> f3 = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a+b&#125;;</div><div class="line"><span class="comment">//또는 </span></div><div class="line"><span class="keyword">const</span> f3 = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a+b;</div></pre></td></tr></table></figure>
+<p>화살표 함수는 항상 익명함수이다. 만약 이름 붙인 함수가 필요하다면 평소에 하던 방식으로 함수를 만들면 된다. </p>
+<p>화살표 함수는 위의 특징 말고도 </p>
+<ol>
+<li>this가 다른 변수와 마찬가지로 정적으로 묶인다. </li>
+<li>객체사용자로 사용할 수 없다.</li>
+<li>arguments변수도 사용할 수 없다. 확산 연산자가 ES6에서 생겼으니 필요없다고 하기도 한다. </li>
+</ol>
+<p>처음에 만들었던 함수를 화살표 함수로 바꾸어 보장<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">avg</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> avg = <span class="function">(<span class="params">a, b</span>) =&gt;</span> (a+b)/<span class="number">2</span>;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div></pre></td></tr></table></figure></p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cj7m902pu000omgub3fngkfc7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/09/16/ex6-04/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/09/16/ex6-04/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/09/06/es6-03/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">이전 글</strong>
+            <div class="article-nav-title">해체할당</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -445,11 +590,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'https://shin-ae.github.io/2017/09/16/ex6-04/';
+        
+        this.page.identifier = 'ex6-04';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
