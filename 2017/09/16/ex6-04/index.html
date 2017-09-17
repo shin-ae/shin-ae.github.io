@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="shin">
 <meta property="og:description" content="es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다! 함수는 기본적으로 이렇게 쓰인다.  1234function hello()&amp;#123;    return &quot;Hello world!&quot;;&amp;#125;hello();   //&quot;Hello world!&quot; 자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징">
 <meta property="og:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
-<meta property="og:updated_time" content="2017-09-15T18:58:17.424Z">
+<meta property="og:updated_time" content="2017-09-17T08:36:43.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6에서 추가된 함수 기능">
 <meta name="twitter:description" content="es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다! 함수는 기본적으로 이렇게 쓰인다.  1234function hello()&amp;#123;    return &quot;Hello world!&quot;;&amp;#125;hello();   //&quot;Hello world!&quot; 자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징">
@@ -283,11 +283,10 @@ ga('send', 'pageview');
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`f: x=<span class="subst">$&#123;x&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line">f();   <span class="comment">//"f: x=undefined"</span></div></pre></td></tr></table></figure>
 <h3 id="ES6에-추가된-매개변수-기본값-지정하기"><a href="#ES6에-추가된-매개변수-기본값-지정하기" class="headerlink" title="ES6에 추가된 매개변수 기본값 지정하기"></a>ES6에 추가된 매개변수 기본값 지정하기</h3><p>일반적으로 매개변수 값을 지정하지 않으면 위에처럼 undefined가 값으로 할당된다. ES6에서는 기본값을 지정 할 수 있게 되었다. </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a,b = <span class="string">"blabla"</span>,c=<span class="number">3</span></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;a&#125;</span> - <span class="subst">$&#123;b&#125;</span> - <span class="subst">$&#123;c&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line">f(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>);   <span class="comment">//"5 - 6 - 7"</span></div><div class="line">f(<span class="number">5</span>, <span class="number">6</span>);   <span class="comment">//"5 - 6 - 3"</span></div><div class="line">f(<span class="number">5</span>);   <span class="comment">//"5 - blabla - 3"</span></div><div class="line">f();   <span class="comment">//"undefined - blabla - 3"</span></div></pre></td></tr></table></figure>
-<p>b가 blabla가 된 것은 알겠는데 a도 같이 지정했음에도 불구하고 <code>undefined</code>나오는 것은 왜 그런 것인지 잘 모르겠습니당!</p>
-<p>###화살표 함수<br>ES6에서 새로만든 화살표 표기법은 <code>function</code>이라는 단어와 중괄호 숫자를 줄이려고 고안된 단축 문법입니다. </p>
+<h3 id="화살표-함수"><a href="#화살표-함수" class="headerlink" title="화살표 함수"></a>화살표 함수</h3><p>ES6에서 새로만든 화살표 표기법은 <code>function</code>이라는 단어와 중괄호 숫자를 줄이려고 고안된 단축 문법입니다. </p>
 <p>화살표 문법은 다음과 같은 특징을 가진다.</p>
 <ol>
-<li>function을 샐략해도 됨</li>
+<li>function을 생략해도 됨</li>
 <li>함수에 매개변수가 단 하나 뿐이라면 괄호(())도 생략할 수 있음</li>
 <li>함수 바디가 표현식 하나라면 중괄호와 return문도 생략할 수 있다. </li>
 </ol>
@@ -299,7 +298,7 @@ ga('send', 'pageview');
 <li>객체사용자로 사용할 수 없다.</li>
 <li>arguments변수도 사용할 수 없다. 확산 연산자가 ES6에서 생겼으니 필요없다고 하기도 한다. </li>
 </ol>
-<p>처음에 만들었던 함수를 화살표 함수로 바꾸어 보장<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">avg</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> avg = <span class="function">(<span class="params">a, b</span>) =&gt;</span> (a+b)/<span class="number">2</span>;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div></pre></td></tr></table></figure></p>
+<p>처음에 만들었던 함수를 화살표 함수로 바꾸어 보장<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">avg</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> avg = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span></div><div class="line">    &#125;;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -310,7 +309,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cj7m902pu000omgub3fngkfc7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cj7ohngqa000m9wubrni9cb7q" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
