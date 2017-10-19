@@ -221,7 +221,7 @@ ga('send', 'pageview');
 
             
             <section id="main">
-    <article id="post-jqury-01-circle" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-jquery-01-circle" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -229,7 +229,7 @@ ga('send', 'pageview');
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/10/19/jqury-01-circle/">jqury로 퍼센트를 표시해보자!</a>
+            <a class="article-title" href="/2017/10/19/jquery-01-circle/">jquery로 퍼센트를 표시해보자!</a>
         </h1>
     
 
@@ -238,7 +238,7 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/10/19/jqury-01-circle/">
+        <a href="/2017/10/19/jquery-01-circle/">
             <time datetime="2017-10-19T09:32:59.000Z" itemprop="datePublished">2017-10-19</time>
         </a>
     </div>
@@ -264,7 +264,39 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <h3 id="발단"><a href="#발단" class="headerlink" title="발단"></a>발단</h3><p>스터디에서 스터디 하시는 분이 소개팅 어플을 개발하고 계신데 거기에서 상대 매칭율을 이쁘고 아름답게 구현하심. 나도 해보고 싶었음. 하지만 쉽지 않았음.</p>
+<hr>
+<h3 id="SVG로-원을-그려보자"><a href="#SVG로-원을-그려보자" class="headerlink" title="SVG로 원을 그려보자"></a>SVG로 원을 그려보자</h3><p>일단 우리에게는 원이 필요하다. svg로 원을 그려보자!</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"cont"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">svg</span> <span class="attr">viewPort</span>=<span class="string">"0 0 320 320"</span> <span class="attr">width</span>=<span class="string">"320"</span> <span class="attr">height</span>=<span class="string">"320"</span> <span class="attr">id</span>=<span class="string">"svg"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">circle</span> <span class="attr">id</span>=<span class="string">"path"</span> <span class="attr">cx</span>=<span class="string">"160"</span> <span class="attr">cy</span>=<span class="string">"160"</span> <span class="attr">r</span>=<span class="string">"100"</span> <span class="attr">stroke</span>=<span class="string">"#000000"</span> <span class="attr">fill</span>=<span class="string">"none"</span> <span class="attr">stroke-width</span>=<span class="string">"10"</span> <span class="attr">stroke-linecap</span>=<span class="string">"round"</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="NaoyoY" data-default-tab="result" data-user="hololloy" data-embed-version="2" data-pen-title="NaoyoY" class="codepen">See the Pen <a href="https://codepen.io/hololloy/pen/NaoyoY/" target="_blank" rel="external">NaoyoY</a> by shin (<a href="https://codepen.io/hololloy" target="_blank" rel="external">@hololloy</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>그럼 이렇게 이쁜 원이 그려지는 것을 볼 수 있다.<br>다음단계에서는 어떻게 원에 애니메이션을 주느냐인데 여기에서 알아야 할 CSS속성이 있다. </p>
+<hr>
+<h3 id="stroke-dasharray-stroke-dashoffset"><a href="#stroke-dasharray-stroke-dashoffset" class="headerlink" title="stroke-dasharray, stroke-dashoffset"></a>stroke-dasharray, stroke-dashoffset</h3><h4 id="stroke-dasharray"><a href="#stroke-dasharray" class="headerlink" title="stroke-dasharray"></a>stroke-dasharray</h4><p>dasharray는 점의 길이와 간격 속성을 부여한다. dasharray에 대한 설명은 <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray" target="_blank" rel="external">여기</a>에서 자세히 볼 수 있다.  </p>
+<h4 id="stroke-dashoffset"><a href="#stroke-dashoffset" class="headerlink" title="stroke-dashoffset"></a>stroke-dashoffset</h4><blockquote>
+<p>specifies the distance into the dash pattern to start the dash</p>
+</blockquote>
+<p>즉, 대시를 시작하기 위해 대시 패턴으로의 거리를 지정하는 것. 모르겠다 이건…어디 블로그에서는 점으로 만들어주는 속성이라고 하는데….얼렁뚱땅 다음 단계로 넘어가보자!</p>
+<hr>
+<h3 id="본격적인-애니메이션-작업"><a href="#본격적인-애니메이션-작업" class="headerlink" title="본격적인 애니메이션 작업"></a>본격적인 애니메이션 작업</h3><p>stroke-dasharray와 stroke-dashoffset을 설정하기 위해서는 일단 원의 둘레 길이를 알아야한다. 우리는 위에서 r(반지름)이 100인 원을 그렸는데 이 원의 둘레는 빠밤</p>
+<blockquote>
+<p>2&pi;r =  628.3185307179587</p>
+</blockquote>
+<p>이렇게 나오는데 이 속성값을 클래스 cir에 넣어줘야 한다.<br>(자바스크립트에서 &pi;는 Math.PI로 계산 할 수 있다.) </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#svg</span> <span class="selector-class">.cir</span>&#123;</div><div class="line">  <span class="attribute">stroke-dasharray</span>: <span class="number">628.3185307179587</span>;</div><div class="line">  <span class="attribute">stroke-dashoffset</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>이렇게 하면 아무 변화가 없는데 여기에 애니메이션을 넣는다.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">stroke-dashoffset</span>: 628<span class="selector-class">.3185307179587</span>;</div><div class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">stroke-dashoffset</span> 1<span class="selector-tag">s</span> <span class="selector-tag">linear</span>;</div></pre></td></tr></table></figure></p>
+<p>그러면 원이 세시 방향에서부터 사라지는 것을 볼 수 있다.<br>이건 svg circle의 특성으로 작업을 용이하게 하기 위해서 시계 반대방향으로 90도 돌려주자.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#svg</span> &#123;</div><div class="line">   <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>이렇게 하면 offset수치 변화에 따른 애니메이션을 본 것이다. 포스팅을 하면서 알게된 것은 변화가 있을 때에만 애니메이션을 볼 수 있다는 것(당연한 것을…)<br>자, 이제 우리의 시작점은 12시에 숨어있을 것이다. 데이터를 변수 val에 입력하여 그것이 애니메이션으로 나타나게 작업을 진행해보자.</p>
+<p>작업의 순서는 다음과 같다<br><code>특정 값 지정-&gt;값에 따른 호의 길이 계산-&gt; css에 입력</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> val = <span class="number">50</span>;   <span class="comment">//특정 값 입력(퍼센트 계산이기 때문에 0~100 사이의 값 입력)</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> $circle = $(<span class="string">'#svg .cir'</span>);   </div><div class="line">    <span class="keyword">var</span> r = $circle.attr(<span class="string">'r'</span>);   <span class="comment">//</span></div><div class="line">    <span class="keyword">var</span> per = ((<span class="number">100</span> - val) / <span class="number">100</span>) * <span class="built_in">Math</span>.PI *r * <span class="number">2</span>; <span class="comment">//호의 길이 계산</span></div><div class="line"></div><div class="line">    $circle.css(</div><div class="line">        strokeDashoffset: per</div><div class="line">    ); <span class="comment">//css에 offset 수치 입력</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>이렇게 하면 다음과 같은 결과가 나온다. </p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="QqYmjZ" data-default-tab="html,result" data-user="hololloy" data-embed-version="2" data-pen-title="QqYmjZ" class="codepen">See the Pen <a href="https://codepen.io/hololloy/pen/QqYmjZ/" target="_blank" rel="external">QqYmjZ</a> by shin (<a href="https://codepen.io/hololloy" target="_blank" rel="external">@hololloy</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><code>$(document).ready(function(){});</code>이 함수로 한번 더 감싸주지 않아서 자꾸 오류가 생겼는데 여기에 넣으니 해결. 오늘은 여기까지 그럼 안녕~</p>
+<p><img src="http://mblogthumb4.phinf.naver.net/MjAxNzAzMjNfMTM1/MDAxNDkwMjM1Njg0NDI2.k7Vwfr94sADdz5ivvZiJUCIYOHytqWN1vBC259N6FYsg.Zxo82NHqBPthtkLopsf4re0XnJNTKAWUcp0XVQ2EY50g.PNG.gwanggeun/%EC%9D%B8%EC%82%AC_%EC%95%88%EB%85%95.png?type=w2" alt="안녕~ 이제 힘들어~"></p>
+
         
         </div>
         <footer class="article-footer">
@@ -274,7 +306,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/19/jqury-01-circle/" data-id="cj8yayzwd000t6cub7g65z9i7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cj8ydedbm0014ugubjkcf4eq3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -342,7 +374,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="https://shin-ae.github.io/2017/10/19/jqury-01-circle/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/10/19/jqury-01-circle/">댓글</a>
+        <a href="https://shin-ae.github.io/2017/10/19/jquery-01-circle/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/">댓글</a>
     
 
         </footer>
@@ -415,7 +447,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cj8yayzwd000i6cubchrcmysm" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cj8ydedb6000qugubvlwzv226" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -519,7 +551,7 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/html/">html</a>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
     </div>
 
                         
@@ -575,7 +607,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cj8yayzwd000w6cubs8hbh9k5" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cj8ydedbm000uugub7orguez8" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -717,7 +749,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cj8yayzvx000c6cubvxol7ph9" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cj8ydedb6000gugubm2cao5lj" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -864,7 +896,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cj8yayzvi00006cubgi4v3m4j" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cj8ydedaq0001ugub9sk5u8nu" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1014,7 +1046,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/01/js-pattern-01/" data-id="cj8yayzwt000z6cub4osfa9xj" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/01/js-pattern-01/" data-id="cj8ydedbm0016ugub38a11594" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1162,7 +1194,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/01/es6-02/" data-id="cj8yayzvx00066cubkhnpe8wr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/01/es6-02/" data-id="cj8ydedb6000augubywa6yru4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1308,7 +1340,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/21/es6-01/" data-id="cj8yayzvx00046cubxexz5cjz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/21/es6-01/" data-id="cj8ydedb6000cugub3bc9t44c" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1456,7 +1488,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/19/es6-start/" data-id="cj8yayzwd000g6cubbvxy5it3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/19/es6-start/" data-id="cj8ydedb6000nugubacnd7p0j" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1608,7 +1640,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/11/wix/" data-id="cj8yayzwt001d6cubcjrwbiyu" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/11/wix/" data-id="cj8ydedbm001cugub2wk8r9dc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1703,10 +1735,10 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/10/19/jqury-01-circle/" class="thumbnail">
+                            <a href="/2017/10/19/jquery-01-circle/" class="thumbnail">
     
     
-        <span style="background-image:url(http://poiemaweb.com/img/jquery-logo.png)" alt="jqury로 퍼센트를 표시해보자!" class="thumbnail-image"></span>
+        <span style="background-image:url(http://poiemaweb.com/img/jquery-logo.png)" alt="jquery로 퍼센트를 표시해보자!" class="thumbnail-image"></span>
     
 </a>
 
@@ -1714,7 +1746,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
-                            <p class="item-title"><a href="/2017/10/19/jqury-01-circle/" class="title">jqury로 퍼센트를 표시해보자!</a></p>
+                            <p class="item-title"><a href="/2017/10/19/jquery-01-circle/" class="title">jquery로 퍼센트를 표시해보자!</a></p>
                             <p class="item-date"><time datetime="2017-10-19T09:32:59.000Z" itemprop="datePublished">2017-10-19</time></p>
                         </div>
                     </li>
@@ -1725,7 +1757,7 @@ ga('send', 'pageview');
                             <a href="/2017/10/10/etc-02/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/css/images/lenovo-01.jpg)" alt="lenovo-ideapad-510s ram upgrade" class="thumbnail-image"></span>
     
 </a>
 
@@ -1751,7 +1783,7 @@ ga('send', 'pageview');
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
                             <p class="item-title"><a href="/2017/09/16/ex6-04/" class="title">es6에서 추가된 함수 기능</a></p>
                             <p class="item-date"><time datetime="2017-09-15T16:32:50.000Z" itemprop="datePublished">2017-09-16</time></p>
                         </div>
@@ -1804,7 +1836,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
