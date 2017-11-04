@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>태그: es6, 해체할당, destructuring-assignment | shin</title>
+    <title>es6에서의 객체 | shin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="shin">
-<meta property="og:url" content="https://shin-ae.github.io/tags/es6-해체할당-destructuring-assignment/index.html">
+    <meta name="description" content="ES6 이전 자바스크립트에서 클래스를 만드는 건 직관적이지 않고 번거로웠음.ES6에서는 클래스를 만드는 간편한 새 문법을 도입 123456class Car&amp;#123;  //새 클래스 Car를 만듦            //아직 인스턴스는 만들어지지 않았지만 언제든 만들 수 있음    constructor()&amp;#123;    &amp;#125;&amp;#125; 인스턴스를">
+<meta name="keywords" content="es6, 클래스, 인스턴스">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6에서의 객체">
+<meta property="og:url" content="https://shin-ae.github.io/2017/11/04/es6-04/index.html">
 <meta property="og:site_name" content="shin">
+<meta property="og:description" content="ES6 이전 자바스크립트에서 클래스를 만드는 건 직관적이지 않고 번거로웠음.ES6에서는 클래스를 만드는 간편한 새 문법을 도입 123456class Car&amp;#123;  //새 클래스 Car를 만듦            //아직 인스턴스는 만들어지지 않았지만 언제든 만들 수 있음    constructor()&amp;#123;    &amp;#125;&amp;#125; 인스턴스를">
+<meta property="og:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
+<meta property="og:updated_time" content="2017-11-04T15:59:58.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shin">
+<meta name="twitter:title" content="es6에서의 객체">
+<meta name="twitter:description" content="ES6 이전 자바스크립트에서 클래스를 만드는 건 직관적이지 않고 번거로웠음.ES6에서는 클래스를 만드는 간편한 새 문법을 도입 123456class Car&amp;#123;  //새 클래스 Car를 만듦            //아직 인스턴스는 만들어지지 않았지만 언제든 만들 수 있음    constructor()&amp;#123;    &amp;#125;&amp;#125; 인스턴스를">
+<meta name="twitter:image" content="https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634">
     
 
     
@@ -220,50 +227,163 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#es6, 해체할당, destructuring-assignment</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-es6-04" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/09/06/es6-03/">해체할당</a>
+        <h1 class="article-title" itemprop="name">
+            es6에서의 객체
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/09/06/es6-03/">
-            <time datetime="2017-09-05T15:23:01.000Z" itemprop="datePublished">2017-09-06</time>
+        <a href="/2017/11/04/es6-04/">
+            <time datetime="2017-11-04T14:50:03.000Z" itemprop="datePublished">2017-11-04</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/JS/">JS</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a>
+        <a class="tag-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>ES6 이전 자바스크립트에서 클래스를 만드는 건 직관적이지 않고 번거로웠음.<br><em>ES6에서는 클래스를 만드는 간편한 새 문법을 도입</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span>&#123;  <span class="comment">//새 클래스 Car를 만듦</span></div><div class="line">            <span class="comment">//아직 인스턴스는 만들어지지 않았지만 언제든 만들 수 있음</span></div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>인스턴스를 만들 때는 <code>new</code>키워드 사용<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> car1 = <span class="keyword">new</span> Car();</div><div class="line"><span class="keyword">const</span> car2 = <span class="keyword">new</span> Car();</div></pre></td></tr></table></figure></p>
+<p>이제 Car클래스의 인스턴스가 두개 생김.<br>제조사(make), 모델 데이터, 변속(shift)기능을 추가해보자<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">car</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(make, model)&#123;</div><div class="line">        <span class="keyword">this</span>.make = make;</div><div class="line">        <span class="keyword">this</span>.model = model;</div><div class="line">        <span class="keyword">this</span>.userGears = [<span class="string">'p'</span>,<span class="string">'n'</span>,<span class="string">'r'</span>,<span class="string">'d'</span>];</div><div class="line">        <span class="keyword">this</span>.userGear = <span class="keyword">this</span>.userGears[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">    shift(gear)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.userGears.indexOf(gear)&lt;<span class="number">0</span>)</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Invalid gear:<span class="subst">$&#123;gear&#125;</span>`</span>);</div><div class="line">        <span class="keyword">this</span>.userGear = gear;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>이 클래스를 실제로 사용하면 다음과 같이 사용할 수 있다.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> car1 = <span class="keyword">new</span> car(<span class="string">"kia"</span>, <span class="string">"chacha"</span>);</div><div class="line"><span class="keyword">const</span> car2 = <span class="keyword">new</span> car(<span class="string">"honda"</span>, <span class="string">"molla"</span>);</div><div class="line">car1.shift(<span class="string">'d'</span>);</div><div class="line">car2.shift(<span class="string">'r'</span>);</div><div class="line"></div><div class="line">car1.userGear   <span class="comment">//"d"</span></div><div class="line">car2.userGear   <span class="comment">//"r"</span></div><div class="line">car1.make;  <span class="comment">//"kia"</span></div><div class="line">car1.model; <span class="comment">//"chacha"</span></div></pre></td></tr></table></figure></p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cj9lim9ay000a2gubuynvj151" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/11/04/es6-04/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/11/04/es6-04/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/11/03/js-obj/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">이전 글</strong>
+            <div class="article-nav-title">객체와 객체지향 프로그래밍</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -445,11 +565,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'https://shin-ae.github.io/2017/11/04/es6-04/';
+        
+        this.page.identifier = 'es6-04';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
