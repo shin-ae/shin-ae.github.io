@@ -168,11 +168,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                24
+                25
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                22
+                23
                 <span>태그</span>
             </div>
         </div>
@@ -221,6 +221,185 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-es6-05" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/18/es6-05/">ES6에서 새로 도입한 데이터 구조 map, set</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/18/es6-05/">
+            <time datetime="2017-11-17T16:12:15.000Z" itemprop="datePublished">2017-11-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/es6-map-set/">es6, map, set</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>맵은 키와 값을 연결한다는 점에서 객체와 비슷하고, 셋은 중복을 허용하지 않는다는 점을 제외하면 배열과 비슷</p>
+<h2 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h2><p>ES6이전에는 키와 값을 연결하려면 객체를 사용해야 했음. 하지만 객체를 이런 목적으로 사용하면 여러가지 단점이 생김</p>
+<ul>
+<li>프로토타입 체인 때문에 의도하지 않은 연결이 생길 수 있음</li>
+<li>객체 안 연결된 키와 값이 몇 개나 되는지 쉽게 알아낼 방법이 없음</li>
+<li>키는 반드시 문자열이나 심볼이어야 하므로 객체를 키로 써서 값과 연결할 수 없음</li>
+<li>객체는 프로퍼티 순서를 전혀 보장하지 않음</li>
+</ul>
+<p><em>map은 키와 값을 연결할 목적이라면 객체보다 나은 선택</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> n1 = &#123;<span class="attr">name</span>:<span class="string">'shin'</span>&#125;;</div><div class="line"><span class="keyword">const</span> n2 = &#123;<span class="attr">name</span>:<span class="string">'jane'</span>&#125;;</div><div class="line"><span class="keyword">const</span> n3 = &#123;<span class="attr">name</span>:<span class="string">'jin'</span>&#125;;</div><div class="line"><span class="keyword">const</span> n4 = &#123;<span class="attr">name</span>:<span class="string">'tt'</span>&#125;;</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line">***</div><div class="line">### map</div><div class="line">먼저 맵을 만듭니다. </div><div class="line"></div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">const</span> userRoles = <span class="keyword">new</span> <span class="built_in">Map</span>();</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="set"><a href="#set" class="headerlink" title="set()"></a>set()</h3><p>다음에는 맵의 <code>set()</code> 메서드를 써서 사용자의 역할을 할당</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">userRoles.set(u1, <span class="string">'user'</span>);</div><div class="line">userRoles.set(u2, <span class="string">'user'</span>);</div><div class="line">userRoles.set(u3, <span class="string">'admin'</span>);</div><div class="line"><span class="comment">//tt는 역할 없음</span></div><div class="line"></div><div class="line"><span class="comment">//set() 메서드는 체인으로 연결할 수 있어서 타이핑의 수고를 덜어줌</span></div><div class="line">userRoles</div><div class="line">    .set(u1, <span class="string">'user'</span>)</div><div class="line">    .set(u2, <span class="string">'user'</span>)</div><div class="line">    .set(u3, <span class="string">'admin'</span>);</div><div class="line"></div><div class="line"><span class="comment">//생성자에 배열의 배열을 넘기는 형태로 써도 됨</span></div><div class="line"><span class="keyword">const</span> userRoles = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">    [u1, <span class="string">'user'</span>],</div><div class="line">    [u2, <span class="string">'user'</span>],</div><div class="line">    [u3, <span class="string">'admin'</span>],</div><div class="line">]);</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><p>이제 u2의 역할을 알아볼 때는 <code>get()</code>메서드를 쓰면 됨.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">userRoles.get(u2);  <span class="comment">//"user"</span></div></pre></td></tr></table></figure></p>
+<p>맵에 존재하지 않는 키에 get을 호출하면 <code>undefined</code>를 반환.</p>
+<hr>
+<h3 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h3><p>맵에 키가 존재하는지 확인하는 <code>has()</code>메서드</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">userRoles.has(u1);  <span class="comment">//true</span></div><div class="line">userRoles.get(u1);  <span class="comment">//"user"</span></div><div class="line">userRoles.has(u4);  <span class="comment">//false</span></div><div class="line">userRoles.get(u4);  <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p>맵에 이미 존재하는 키에 set()을 호출하면 값이 교체됨<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">userRoles.get(u1);  <span class="comment">//user</span></div><div class="line">userRoles.set(u1, <span class="string">'admin'</span>);</div><div class="line">userRoles.get(u1);  <span class="comment">//admin</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="size"><a href="#size" class="headerlink" title="size()"></a>size()</h3><p>size프로퍼티는 맵의 요소 갯수를 반환<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">userRoles.size; <span class="comment">//3</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="keys-values-entries"><a href="#keys-values-entries" class="headerlink" title="keys(),values(), entries()"></a>keys(),values(), entries()</h3><p>key메서드는 맵의 키,<br>values 메서드는 값,<br>entries 메서드는 첫번째 요소가 키값이고 두번째 요소가 값인 배열을 반환<br><code>이 메서드가 반환하는 것은 모두 이터러블 객체여서  for...of루프를 쓸 수 있음</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> u <span class="keyword">of</span> userRoles.keys())</div><div class="line">    <span class="built_in">console</span>.log(u.name);</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> r <span class="keyword">of</span> userRoles.values())</div><div class="line">    <span class="built_in">console</span>.log(r);</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> ur <span class="keyword">of</span> userRoles.entries())</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;ur[<span class="number">0</span>].name&#125;</span>: <span class="subst">$&#123;ur[<span class="number">1</span>]&#125;</span>`</span>);</div><div class="line"></div><div class="line"><span class="comment">//맵도 분해할 수 있음</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [u, r] <span class="keyword">of</span> userRoles.entries())</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;u.name&#125;</span>: <span class="subst">$&#123;r&#125;</span>`</span>);</div><div class="line"></div><div class="line"><span class="comment">//entries()메서드는 맵의 기본 이터레이터.</span></div><div class="line"><span class="comment">//위 코드는 다음과 같이 단축해서 쓸 수 있음</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [u, r] <span class="keyword">of</span> userRoles)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;u.name&#125;</span>: <span class="subst">$&#123;r&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
+<p>이터러블 객체보다 배열이 필요하다면 확산 연산자를 쓰면 됨<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[...userRoles.values()];    <span class="comment">//["user", "user", "admin"]</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h3><p>맵의 요소를 지울 떄 사용<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">userRoles.delete(u2);</div><div class="line">userRoles.size; <span class="comment">//2</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h3><p>맵의 요소를 모두 지울 때 사용<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">userRoles.clear();</div><div class="line">userRoles.size; <span class="comment">//0</span></div></pre></td></tr></table></figure></p>
+<h2 id="위크맵"><a href="#위크맵" class="headerlink" title="위크맵"></a>위크맵</h2><p>WeakMap은 다음 차이점을 제외하면 Map과 완전히 같음</p>
+<ul>
+<li>키는 반드시 객체여야 한다. </li>
+<li>WeakMap의 키는 가비지 콜렉션에 포함될 수 있다.</li>
+<li>WeakMap은 이터러블이 아니며 clear()메서드도 없음</li>
+</ul>
+<p>일반적으로 자바스크립트 코드는 코드 어딘가에서 객체를 참고하는 한 객체의 메모리를 계속 유지하려고 하는데 WeakMap은 그렇지 않음. 가비지 콜렉션 중인 객체를 노출할 위험이 큼</p>
+<p><code>WeakMap의 이런 특징은 객체 인스턴스의 전용 키를 저장하기에 알맞음</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> secretHolder = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> secret = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span></span>&#123;</div><div class="line">        setSecret(secret)&#123;</div><div class="line">            secret.set(<span class="keyword">this</span>, secret);</div><div class="line">        &#125;</div><div class="line">        getSecret()&#123;</div><div class="line">            <span class="keyword">return</span> secret.get(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>비밀을 저장할 때는 setSecret, 보려고 할 때에는 getSecret<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> secretHolder();</div><div class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> secretHolder();</div><div class="line"></div><div class="line">a.setSecret(<span class="string">'secret A'</span>);</div><div class="line">b.setSecret(<span class="string">'secret B'</span>);</div><div class="line"></div><div class="line">a.getSecret();  <span class="comment">//"secret A"</span></div><div class="line">b.getSecret();  <span class="comment">//"secret B"</span></div></pre></td></tr></table></figure></p>
+<p><strong>일반적인 Map을 써도 되지만 그렇게 하면 secretHolder 인스턴스에 저장한 내용은 가비지 콜렉션에 포함되지 않음. 가지비 콜렉션에 추가하고 싶으면 WeakMap(?)</strong></p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set은 중복을 허용하지 않는 데이터 집합.<br>같은 사용자에게 같은 역할을 여러번 부여한다는 것은 상식적이지 않음. 셋은 이런 경웨 이상적인 데이터 구조</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> roles = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line"><span class="comment">//사용자 역할을 추가할 때에는 add()메서드를 사용</span></div><div class="line">roles.ass(<span class="string">"user"</span>);  <span class="comment">//Set ["user"]</span></div><div class="line"></div><div class="line"><span class="comment">//사용자에게 관리자 역할을 추가하려면 add()</span></div><div class="line">roles.add(<span class="string">"admin"</span>); <span class="comment">//Set ["user", "admin"]</span></div><div class="line"></div><div class="line"><span class="comment">//map과 마찬가지로 Set에도 size프로퍼티가 있음</span></div><div class="line">roles.size; <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<p><code>추가하려는 것이 이미 셋에 있는지 확인할 필요 없음. 이미 있다면 아무 일도 일어나지 않음</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">roles.add(<span class="string">"user"</span>);  <span class="comment">//Set ["user", "admin"]</span></div><div class="line">roles.size; <span class="comment">//2</span></div></pre></td></tr></table></figure></p>
+<p>역할을 제거하고 싶을 떄에는 <code>delete()</code><br>제거에 성공했다면(그런 역할이 셋에 존재했다면) <code>true</code>반환, 아니면 <code>false</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">roles.delete(<span class="string">"admin"</span>);  <span class="comment">//true</span></div><div class="line">roles;  <span class="comment">//Set ["user"]</span></div><div class="line">roles.delete(<span class="string">"admin"</span>);  <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><p>위크셋은 객체만 포함 할 수 있으며, 이 객체들은 가비지 콜렉터의 대상이 됨.<br>WeakMap과 마찮가지로 WeakSet도 이터러블이 아님</p>
+<p>위크셋의 용도는 매우 적음.<br><em>실제 용도는 주어진 객체가 셋 안에 존재하는지 아닌지를 알아보는 것 뿐</em> 이라고 해도 과언이 아님</p>
+<p>EX) 산타클로스가 jingjing라는 WeakSet을 가지고 어떤 아이가 우는 아이인지 확인해서 선물대신 석탄(도 가격이 올랐다던데)을 놓고 온다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> jingjing = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</div><div class="line"></div><div class="line"><span class="keyword">const</span> children = &#123;</div><div class="line">    &#123;<span class="attr">name</span>: <span class="string">"suzy"</span>&#125;,</div><div class="line">    &#123;<span class="attr">name</span>: <span class="string">"shin"</span>&#125;,</div><div class="line">&#125;;</div><div class="line">jingjing.add(children[<span class="number">1</span>]);</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> child <span class="keyword">of</span> children)&#123;</div><div class="line">    <span class="keyword">if</span>(jingjing.has(child))</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`Coal for <span class="subst">$&#123;child.name&#125;</span>!`</span>);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`Presents for <span class="subst">$&#123;child.name&#125;</span>!`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cja43wyl1000asgubwjuuvkpa" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/11/18/es6-05/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/11/18/es6-05/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-es6-04" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -279,7 +458,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cj9lim9ay000a2gubuynvj151" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cja43wyl1000fsgubzun1mq96" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -425,7 +604,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cj9lim9b400102gubkqbidzx8" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cja43wylh0017sgubnm4tv2j9" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -593,7 +772,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cj9lim9b400132gub30fjcn0h" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cja43wylh001esgube9dgzojx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -756,7 +935,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cj9lim9bj001b2gub0786b8ux" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cja43wylh0015sgubbnme5kqt" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -897,7 +1076,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cj9lim9b4000m2gubo1syy7wh" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cja43wylh000vsgubt9czo0yb" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1057,7 +1236,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cj9lim9b4000w2gub3qukjju6" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cja43wylh001bsgubtgh6jemi" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1199,7 +1378,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cj9lim9aw00062gubj4oy19vp" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cja43wyl10005sgubalzpx2f4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1346,7 +1525,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cj9lim9ao00012gububloob2a" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cja43wyl10004sgubcak95l65" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1496,7 +1675,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/01/js-pattern-01/" data-id="cj9lim9bj001h2gubvaheil7a" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/01/js-pattern-01/" data-id="cja43wylh001lsgubs9y32894" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1574,154 +1753,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-es6-02" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/09/01/es6-02/">es6-02</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/01/es6-02/">
-            <time datetime="2017-09-01T11:36:42.000Z" itemprop="datePublished">2017-09-01</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JS/">JS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="for…in-루프"><a href="#for…in-루프" class="headerlink" title="for…in 루프"></a>for…in 루프</h3><p><code>for...in</code>루프는 객체의 프로퍼티에 루프를 실행하도록 설계된 루프</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(variable <span class="keyword">in</span> object)</div><div class="line">    statement</div></pre></td></tr></table></figure>
-<p>이건 es6에 새로 추가된 문법은 아니지만 내가 몰랐었으니 추가</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> player = &#123; <span class="attr">name</span> : <span class="string">'Thomas'</span>, <span class="attr">rank</span> : <span class="string">'Midshipman'</span>, <span class="attr">age</span>:<span class="number">25</span>&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> player)&#123;</div><div class="line">    <span class="keyword">if</span>(!player.hasOwnProperty(prop)) <span class="keyword">continue</span>;</div><div class="line">    <span class="built_in">console</span>.log(prop + <span class="string">':'</span> + player[prop]); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>결과는</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"name:Thomas"</span></div><div class="line"><span class="string">"rank:Midshipman"</span></div><div class="line"><span class="string">"age:25"</span></div></pre></td></tr></table></figure>
-<p>여기에서 player.hasOwnProperty를 호출할 필요는 없지만 이 메서드를 생략하면 에러가 생기기 쉽다고 한다. 나중에 다시 보는걸로… </p>
-<h3 id="for…of-루프"><a href="#for…of-루프" class="headerlink" title="for…of 루프"></a>for…of 루프</h3><p>for…of 루프는 ES6에 새로생긴 반복문.<br>컬렉션 요소에 루프를 실행한다고 한다. 배열은 물론 이터러블(iterable)객체에 모두 사용이 가능하다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(variable <span class="keyword">of</span> object)</div><div class="line">    statement</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> hand = [randFace(), randFace(), randFace()];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> face <span class="keyword">of</span> hand)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`you rolled...<span class="subst">$&#123;face&#125;</span>!`</span>);</div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure>
-<p>for…of는 배열에 루프를 실행해야 하지만 각 요소의 인덱스를 알 필요는 없을때 알맞음. 인덱스를 알아야 하면 일반적인  <code>for</code>루프를 이용하는 것으로</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> hand = [randFace(), randFace(), randFace()];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;hand.length; i++)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`ROLL <span class="subst">$&#123;i+<span class="number">1</span>&#125;</span> : <span class="subst">$&#123;hand[i]&#125;</span>`</span>);</div></pre></td></tr></table></figure>
-<p>책에서는 이렇게 나왔는데 이론적으로 나와서 잘 이해가 되지 않는다.<br>예제를 찾아보자. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iterable = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 10</span></div><div class="line"><span class="comment">// 20</span></div><div class="line"><span class="comment">// 30</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iterable = <span class="string">"boo"</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// "b"</span></div><div class="line"><span class="comment">// "o"</span></div><div class="line"><span class="comment">// "o"</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iterable = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">"a"</span>, <span class="number">1</span>], [<span class="string">"b"</span>, <span class="number">2</span>], [<span class="string">"c"</span>, <span class="number">3</span>]]);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> entry <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(entry);</div><div class="line">&#125;</div><div class="line"><span class="comment">// [a, 1]</span></div><div class="line"><span class="comment">// [b, 2]</span></div><div class="line"><span class="comment">// [c, 3]</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> iterable) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div></pre></td></tr></table></figure>
-<p>등등 다양하게 쓸 수 있다고 한다. 더 많은 예제는 아래 링크에서 볼 수 있다.<br><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="external">MDN</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/09/01/es6-02/" data-id="cj9lim9b2000f2gube094sdg2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/09/01/es6-02/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/09/01/es6-02/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">다음 &raquo;</a>
     </nav>
@@ -1735,6 +1766,25 @@ ga('send', 'pageview');
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/18/es6-05/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634)" alt="ES6에서 새로 도입한 데이터 구조 map, set" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2017/11/18/es6-05/" class="title">ES6에서 새로 도입한 데이터 구조 map, set</a></p>
+                            <p class="item-date"><time datetime="2017-11-17T16:12:15.000Z" itemprop="datePublished">2017-11-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1812,25 +1862,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/10/etc-02/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/css/images/lenovo-01.jpg)" alt="lenovo-ideapad-510s ram upgrade" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/etc/">etc</a></p>
-                            <p class="item-title"><a href="/2017/10/10/etc-02/" class="title">lenovo-ideapad-510s ram upgrade</a></p>
-                            <p class="item-date"><time datetime="2017-10-10T10:03:07.000Z" itemprop="datePublished">2017-10-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1840,7 +1871,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -1849,7 +1880,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -1858,7 +1889,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1867,7 +1898,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
+            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
         </div>
     </div>
 
