@@ -168,11 +168,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                26
+                27
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                24
+                25
                 <span>태그</span>
             </div>
         </div>
@@ -221,6 +221,187 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-vega-lite-01" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/12/20/vega-lite-01/">vega-lite로 그래프를 그려보자.</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/12/20/vega-lite-01/">
+            <time datetime="2017-12-20T13:08:16.000Z" itemprop="datePublished">2017-12-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/html/">html</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="데이터-시각화-라이브러리"><a href="#데이터-시각화-라이브러리" class="headerlink" title="데이터 시각화 라이브러리"></a>데이터 시각화 라이브러리</h2><p>웹에서 데이터를 그래프로 그리기 위해(시각화) 라이브러리를 많이 이용한다.<br>그 중 많이 몇가지를 살펴보자면 구글 차트 라이브러리, 하이차트(Highchart),  베가 라이트(Vega-Lite), c3, EChart가 있음. </p>
+<h3 id="google-차트-라이브러리"><a href="#google-차트-라이브러리" class="headerlink" title="google 차트 라이브러리"></a><a href="https://developers.google.com/chart/interactive/docs/gallery" target="_blank" rel="external">google 차트 라이브러리</a></h3><p>구글 차트 라이브러리는 총 29종의 기본적인 차트를 제공하는데, 멀티터치를 지원하고 호환성이 좋아서 모바일에서도 많이 사용하는 것 같다. 하지만 인터넷이 잘 되지 않는 환경이라면 보이지 않는나는 듯<br><del>써 놓고 보니 좀 이상하네. 웹에 띄우는 거면 인터넷이 되어야 뭐든 보일텐데…</del></p>
+<p>무료로 사용 가능하다. </p>
+<h3 id="하이차트-Highchart"><a href="#하이차트-Highchart" class="headerlink" title="하이차트(Highchart)"></a><a href="https://www.highcharts.com/demo/" target="_blank" rel="external">하이차트(Highchart)</a></h3><p>하이차트는 광고목적이 아닐 시에만 무료로 사용 가능.<br>아이폰과 아이패드를 포함한 모바일 브라우저와 멀티 터치 줌을 지원하는 것이 특징이라고… 이와 같은 이유로 페이스북, 트위터 등 많은 기업에서 사용하고 있다고 한다. </p>
+<h3 id="베가-라이트-vega-lite"><a href="#베가-라이트-vega-lite" class="headerlink" title="베가 라이트(vega-lite)"></a><a href="https://vega.github.io/vega-lite/" target="_blank" rel="external">베가 라이트(vega-lite)</a></h3><p>내가 써야하는 베가 라이트. 베가는 D3라이브러리를 기반으로 하고 있는데 다른 차트들이 “내가 차트들을 준비했으니 맘에 드는 것을 골라서 써보렴” 하는 느낌이라면 베가는 “니가 다양하게 커스터마이징 할 수 있게 우리가 보조할게” 하는 느낌. 다양한 커스터 마이징이 가능하다. 관련 커뮤니티가 꾸준히 성장하고 있는 것도 장점 중의 하나. </p>
+<p>무료로 사용가능. 더 많은 기능을 지원하는 vega와 간단하고 심플하게 사용 할 수 있는 vega-lite가 있다. 많은 장점이 있으나 ie8버전 이하는 지원하고 있지 않아 좀 고민이 있다. </p>
+<h3 id="C3"><a href="#C3" class="headerlink" title="C3"></a><a href="http://c3js.org/" target="_blank" rel="external">C3</a></h3><p>전에 포스팅헸던 C3. 커스터 마이징이 많이 필요하지 않다면 이것도 간단하게 사용하기 좋다. C3는 애니메이션도 훌륭하고 디자인도 좋고 반응형이라서 내가 좋아함. 게다가 D3라이브러리를 기본으로 한 것중에는 좀 쉬운편. <em>D3어려움…</em></p>
+<h3 id="EChart"><a href="#EChart" class="headerlink" title="EChart"></a><a href="http://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all" target="_blank" rel="external">EChart</a></h3><p>이번에 차트 라이브러리 찾아보면서 알게된 중국에서 만든 차트. 바이두에서 만든 오픈소스 라이브러리이며 ie8이하까지 지원된다는 막강한 장점이 있다.<br>차트의 종류가 진짜 어마어마하게 많다. <em>니가 뭘 좋아할지 몰라서 다 준비해 봤어</em> </p>
+<blockquote>
+<p>개발자분께 이것저것 물어보니 자바스크립트 차트 라이브러리는 오조 오억개 정도 되는 느낌이다. 각자 다 장점과 단점이 있으니 살펴보고 프로젝트에 맞는 차트 라이브러리를 고르면 되겠다. 다만 한번 만든뒤로 업데이트가 되고 있지 않은 라이브러리들이 많은데 관련 커뮤니티가 꾸준히 성장하고 있는 라이브러리를 고르는 것이 좋을 것 같다. </p>
+</blockquote>
+<hr>
+<h2 id="vega-lite-기본-셋팅"><a href="#vega-lite-기본-셋팅" class="headerlink" title="vega-lite 기본 셋팅"></a>vega-lite 기본 셋팅</h2><p>본격적으로 베가 라이트를 살펴봅시당.<br><a href="https://vega.github.io/vega-lite/examples/" target="_blank" rel="external">베가 라이트 예제</a>에 들어가면 여러가지 예제를 살펴볼 수 있다. 이중에 나는 여러개의 라인으로 만들어진 라인차트가 필요.<br><img src="https://vega.github.io/vega-lite/examples/compiled/line_color.svg" alt="Multi Series Line Chart"><br><em>베가라이트가 커스터 마이징으로 다양한 차트를 그릴 수 있지만 나는 일단 초심자이니 비슷한 것을 수정해 가면서 하나하나 배우기로 한다.</em></p>
+<p>음 한번 예제를 구경 했으니 실제로 써보도록 하자.<br><a href="https://vega.github.io/vega-lite/usage/embed.html" target="_blank" rel="external">사용하기</a>에 가보면 어떻게 기본 셋팅을 해야 하는지 나와있다. 실시간으로 가져와도 되고 라이브러리 다운받아도 되고, 노드로 설치해도 되고…</p>
+<p>나는 링크로 가져오는(CDN) 방식을 선택.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Embedding Vega-Lite<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.3/vega-lite.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"vis"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">    var yourVlSpec = &#123;</div><div class="line">      "$schema": "https://vega.github.io/schema/vega-lite/v2.0.json",</div><div class="line">      "description": "A simple bar chart with embedded data.",</div><div class="line">      "data": &#123;</div><div class="line">        "values": [</div><div class="line">          &#123;"a": "A","b": 28&#125;, &#123;"a": "B","b": 55&#125;, &#123;"a": "C","b": 43&#125;,</div><div class="line">          &#123;"a": "D","b": 91&#125;, &#123;"a": "E","b": 81&#125;, &#123;"a": "F","b": 53&#125;,</div><div class="line">          &#123;"a": "G","b": 19&#125;, &#123;"a": "H","b": 87&#125;, &#123;"a": "I","b": 52&#125;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      "mark": "bar",</div><div class="line">      "encoding": &#123;</div><div class="line">        "x": &#123;"field": "a", "type": "ordinal"&#125;,</div><div class="line">        "y": &#123;"field": "b", "type": "quantitative"&#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    vegaEmbed("#vis", yourVlSpec);</div><div class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>이렇게 하면 기본적인 차트를 볼 수 있습니다.<br><img src="/css/images/vega/vega.png" alt="기본차트"></p>
+<p>여기에서 우리가 아까 보았던 샘플로 돌아가 그 코드를 yourVlSpec에 넣어 봅시다.<br><strong>앞으로는 yourVlSpec안에서만 코드를 변경할 겁니다.</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> yourVlSpec =   &#123;</div><div class="line">      <span class="string">"$schema"</span>: <span class="string">"https://vega.github.io/schema/vega-lite/v2.json"</span>,</div><div class="line">      <span class="string">"description"</span>: <span class="string">"Stock prices of 5 Tech Companies over Time."</span>,</div><div class="line">      <span class="string">"data"</span>: &#123;<span class="string">"url"</span>: <span class="string">"data/stocks.csv"</span>&#125;,</div><div class="line">      <span class="string">"mark"</span>: <span class="string">"line"</span>,</div><div class="line">      <span class="string">"encoding"</span>: &#123;</div><div class="line">        <span class="string">"x"</span>: &#123;<span class="string">"field"</span>: <span class="string">"date"</span>, <span class="string">"type"</span>: <span class="string">"temporal"</span>, <span class="string">"axis"</span>: &#123;<span class="string">"format"</span>: <span class="string">"%Y"</span>&#125;&#125;,</div><div class="line">        <span class="string">"y"</span>: &#123;<span class="string">"field"</span>: <span class="string">"price"</span>, <span class="string">"type"</span>: <span class="string">"quantitative"</span>&#125;,</div><div class="line">        <span class="string">"color"</span>: &#123;<span class="string">"field"</span>: <span class="string">"symbol"</span>, <span class="string">"type"</span>: <span class="string">"nominal"</span>&#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>이렇게 하면 멋진 라인 그래프가 짠! 하고 <strong>안 나올 겁니다.</strong><br><strong>안나와요.</strong> 왜냐면 이건 csv데이터를 가져와서 그리는 거라서요. 다음 단계는 데이터 사이언스팀에 자료를 요청하는 겁니다. 왜….회사에 데이터 사이언스팀 하나씩 다 있잖아요. ㅎㅎㅎ </p>
+<p>혹시나 데이터 때문에 안나오는 그래프가 안나오면 그때부터는 어떻게 해야 하는지 모를테니 일단 예제의 데이터 형식과 같게 데이터를 뽑습니다.<br>데이터는 베가 웹에서 개발자모드로 들어가 네트워크 탭을 누르시면 확인하실 수 있습니다. </p>
+<p><img src="/css/images/vega/network.jpg" alt="네트워크 확인"><br>stocks.csv를 보면 항목(symbol), 날짜(date, x축), 데이터 수치(price, y축)으로 정렬이 되어있습니다. 이런 형식으로 뽑아달라고 요청을 했습니다.<br>자료를 같은 폴더에 넣고 데이터 URL을 수정해 줍니다. </p>
+<p><code>&quot;data&quot;: {&quot;url&quot;: &quot;index_scaled_price.csv&quot;},</code></p>
+<p>이렇게 말이죠. 이렇게 하면 아마 전체 면적이 파란 그래프를 보실 수 있으실 겁니다. </p>
+<p><img src="/css/images/vega/vega-01.png" alt="파란색 그래프"></p>
+<p>color에서 <code>&quot;field&quot;: &quot;symbol&quot;</code>을 <code>&quot;field&quot;: &quot;index&quot;</code>로 수정해 봅니다. 항목이 symbol에서 index로 바뀌었으니까요. 그러면 진짜 알흠다운 그래프를 보실 수 있습니다. </p>
+<p><img src="/css/images/vega/vega-02.png" alt="알흠다워!"></p>
+<blockquote>
+<p>기본적으로 제공되는 차트도 예쁩니다. 색도 분명하게 구분이 되고 선도 얇습니다. (제거는 데이터 양이 좀 많아서 두꺼워보입니다.) 하지만 조금만 더 신경을 써보기로 합니다. </p>
+</blockquote>
+<hr>
+<h2 id="vega-lite-커스터마이징"><a href="#vega-lite-커스터마이징" class="headerlink" title="vega-lite 커스터마이징"></a>vega-lite 커스터마이징</h2><p>거창하게 커스터마이징이라고는 하지만 색깔바꾸고, x축 grid없애고, 테두리 없애고, 크기 조정하고 X축 항목들 좀 조정하는 정도. </p>
+<h3 id="크기조정"><a href="#크기조정" class="headerlink" title="크기조정"></a>크기조정</h3><p>웹에 넣으려고 작업을 한게 아니고 인쇄용으로 쓰려고 작업을 한 것이기 때문에 나는 큰 사이즈의 그래프가 필요했다. 사이즈를 조절하는 것은 쉽다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> yourVlSpec = &#123;</div><div class="line">       <span class="string">"$schema"</span>: <span class="string">"https://vega.github.io/schema/vega-lite/v2.json"</span>,</div><div class="line">       <span class="string">"description"</span>: <span class="string">"Stock prices of 5 Tech Companies over Time."</span>,</div><div class="line">       <span class="string">"width"</span>: <span class="number">1000</span>,   <span class="comment">//가로값 1000px</span></div><div class="line">       <span class="string">"height"</span>: <span class="number">800</span>,   <span class="comment">//세로값 800px </span></div><div class="line">       ...</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<p>vega는 1000을 적으면 자동적으로 1000px으로 인식합니다.</p>
+<h3 id="테두리-없애기"><a href="#테두리-없애기" class="headerlink" title="테두리 없애기"></a>테두리 없애기</h3><p>그래프를 그리다 보니 오른쪽 세로선이 거슬림. 아무리 axisRight를 조절해 보아도 안 없어지는 선…. 주변에 자문을 구하니 저게 축이 아니라 테두리일 가능성이 있다는 것. </p>
+<p><img src="/css/images/vega/vega-03.png" alt="테두리가 defalt"></p>
+<p>그럼 테두리를 없애보자. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> yourVlSpec =&#123;</div><div class="line">    <span class="string">"$schema"</span>: <span class="string">"https://vega.github.io/schema/vega-lite/v2.json"</span>,</div><div class="line">        <span class="string">"description"</span>: <span class="string">"Stock prices of 5 Tech Companies over Time."</span>,</div><div class="line">        <span class="string">"data"</span>: &#123;<span class="string">"url"</span>: <span class="string">"index_scaled_price.csv"</span>&#125;,</div><div class="line">        <span class="string">"width"</span>: <span class="number">1000</span>,</div><div class="line">        <span class="string">"height"</span>: <span class="number">800</span>,</div><div class="line">        <span class="string">"mark"</span>: <span class="string">"line"</span>,</div><div class="line">        <span class="string">"encoding"</span>: &#123;</div><div class="line">          ...</div><div class="line">        &#125;,</div><div class="line">        <span class="string">"config"</span>: &#123;</div><div class="line">            <span class="string">"view"</span>: &#123;</div><div class="line">                <span class="string">"stroke"</span>: <span class="string">"transparent"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>하단에 config를 추가하여 view속성에서 선을 투명으로 바꾸는 코드를 추가해 준다. 그러면 다음과 같이 선이 없어진다. </p>
+<p><img src="/css/images/vega/vega-04.png" alt="테두리 없애기"></p>
+<p>x축의 그리드가 있기 때문에 명확하게 보이지 않는다. 그럼 다음으로 x축 그리드를 없애보기로 한다. </p>
+<h3 id="x축-그리드-없애기-포맷-변경-라벨-각도-조절"><a href="#x축-그리드-없애기-포맷-변경-라벨-각도-조절" class="headerlink" title="x축 그리드 없애기, 포맷 변경, 라벨 각도 조절"></a>x축 그리드 없애기, 포맷 변경, 라벨 각도 조절</h3><p>이것 모두 쉽게 조절이 가능하다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="string">"encoding"</span>: &#123;</div><div class="line">    <span class="string">"x"</span>: &#123;</div><div class="line">        <span class="string">"field"</span>: <span class="string">"date"</span>,</div><div class="line">        <span class="string">"type"</span>: <span class="string">"temporal"</span>,</div><div class="line">        <span class="string">"axis"</span>: &#123;</div><div class="line">           <span class="string">"format"</span>: <span class="string">"%Y-%m"</span>,   <span class="comment">//라벨의 포맷을 변경, 달까지 나오게</span></div><div class="line">           <span class="string">"grid"</span>: <span class="literal">false</span>,   <span class="comment">//그리드 없애기</span></div><div class="line">           <span class="string">"labelAngle"</span>: <span class="string">"320"</span>  <span class="comment">//라벨의 각도를 조절</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div></pre></td></tr></table></figure>
+<p><img src="/css/images/vega/vega-05.png" alt="x축 커스터마이징"><br>조절한 모습, 위의 그림과 비교해보면 라벨이 돌아갔고, 세로선이 없어졌으며, 년도까지 나오던 라벨이 달까지 나오는 것을 알 수 있다. </p>
+<h3 id="선-색깔-바꾸기"><a href="#선-색깔-바꾸기" class="headerlink" title="선 색깔 바꾸기"></a>선 색깔 바꾸기</h3><p>마지막으로 라인의 색을 수정하며 마치기로 합니다.<br>색은 기존에 있던 컬러에서 약간의 코드를 추가하여 바꿀 수 있습니다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="string">"color"</span>: &#123;</div><div class="line">    <span class="string">"field"</span>: <span class="string">"index"</span>, </div><div class="line">    <span class="string">"type"</span>: <span class="string">"nominal"</span>,</div><div class="line">    <span class="string">"scale"</span>: &#123;</div><div class="line">            <span class="string">"range"</span>: [<span class="string">"#ff775e"</span>, <span class="string">"#f985a6"</span>, <span class="string">"#97d93f"</span>, <span class="string">"#febd3a"</span>, <span class="string">"#916ed6"</span>, <span class="string">"#6489ae"</span>, <span class="string">"#44b9e2"</span>]</div><div class="line">          &#125; <span class="comment">//추가된 부분</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><img src="/css/images/vega/vega-06.png" alt="데이터 컬러 바꾸기"></p>
+<hr>
+<p>이외에도 vega로 바꿀 수 있는 부분이 많이 있습니다. 베가 홈페이지의 <a href="https://vega.github.io/vega-lite/docs/" target="_blank" rel="external">Documentation</a>에 보면 뭔가 많이 있습니다. 수정하고 싶으신 부분을 찾으시거나 비슷한 그래프를 인터넷에 찾아보시면 도움이 되실 거라고 생각합니다. 배울 건 언제나 넘치네요. <em>하지만 나는 귀찮을 뿐이고</em></p>
+<p><img src="http://2runzzal.com/uploads/zpicture/thum/0d6b8346cbd9085c51c58e5e0cbcde267dfadd52ea378ddc33b77b0324921a3f.jpg" alt="열심히 합시다!"></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjbg2w4qo001qr8ubbn3gpnwh" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/12/20/vega-lite-01/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-js-function" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -271,7 +452,7 @@ ga('send', 'pageview');
 <h3 id="값을-반환하는-함수로"><a href="#값을-반환하는-함수로" class="headerlink" title="값을 반환하는 함수로"></a>값을 반환하는 함수로</h3><p>위의 printLeapYearStatus 함수는 재사용하기 편리하지만 프로그램이 커지면 콘솔에 기록하는 것은 의미가 없어짐. HTML에 결과를 출력하거나, 파일에 저장하거나, 다른 계산에 사용해야 할 수도 있는데 지금 함수로는 그렇게 사용할 수가 없음</p>
 <p><strong>그래서 함수가 값을 반환하는 서브루틴이 되도록 수정</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isCurrenrYearLeapYear</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">const</span> year = <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear();</div><div class="line">    <span class="keyword">if</span>(year%<span class="number">4</span>!==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(year%<span class="number">100</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(year%<span class="number">400</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">isCurrenrYearLeapYear();    <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<p>###함수로서의 함수<br>순수한 함수에서는 입력이 같으면 결과도 같아야 함<br><code>isCurrenrYearLeapYear</code>함수는 언제 호출하느냐에 따라 true를 반환하기도, false를 반환하기도 한다. 순수한 함수는 아니라는 것.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isLeapYear</span>(<span class="params">year</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(year%<span class="number">4</span>!==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(year%<span class="number">100</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(year%<span class="number">400</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">isLeapYear(<span class="number">2014</span>);   <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<h3 id="함수로서의-함수"><a href="#함수로서의-함수" class="headerlink" title="함수로서의 함수"></a>함수로서의 함수</h3><p>순수한 함수에서는 입력이 같으면 결과도 같아야 함<br><code>isCurrenrYearLeapYear</code>함수는 언제 호출하느냐에 따라 true를 반환하기도, false를 반환하기도 한다. 순수한 함수는 아니라는 것.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isLeapYear</span>(<span class="params">year</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(year%<span class="number">4</span>!==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(year%<span class="number">100</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(year%<span class="number">400</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">isLeapYear(<span class="number">2014</span>);   <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
 <p>year지역변수에 고정된 값이 들어가게 되니 같은 값이 들어가게 되고, 결과도 같아진다. 다른 효과도 전혀 없으니 순수한 함수라고 할 수 있음</p>
 <h3 id="This-code-here-could-be-more-DRY"><a href="#This-code-here-could-be-more-DRY" class="headerlink" title="This code here could be more DRY"></a>This code here could be more DRY</h3><p><code>DRY(don&#39;t repeat yourself)</code> 함수는 반복을 없애는 것이 좋다.<br>순수한 함수를 쓰면 코드를 테스트하기 쉽고, 이해하기 쉽고, 재사용하기도 쉽다. 순수한 함수를 사용하도록 습관을 들이는 것이 좋음</p>
 <h3 id="함수에-별명-붙이기"><a href="#함수에-별명-붙이기" class="headerlink" title="함수에 별명 붙이기"></a>함수에 별명 붙이기</h3><p>변수가 있는 곳에는 함수도 있을 수 있음</p>
@@ -283,7 +464,7 @@ ga('send', 'pageview');
 <li>함수가 함수를 반환할 수 있음</li>
 <li>함수를 매개변수로 받는 함수를 반환하는 것도 가능<br><code>다 가능?</code></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addThreeSquareAddFiveTakeSquareRoot</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.sqrt(<span class="built_in">Math</span>.pow(x+<span class="number">3</span>, <span class="number">2</span>)+<span class="number">5</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//막 이런 함수 별명을 써서 간단하게 바꾸면...</span></div><div class="line"><span class="keyword">const</span> f = addThreeSquareAddFiveTakeSquareRoot;</div><div class="line"><span class="comment">//여기서는 함수명 다음에ㅐ 괄호를 안쓴다!</span></div><div class="line"><span class="keyword">const</span> answer = (f(<span class="number">5</span>) + f(<span class="number">2</span>)) /f(<span class="number">7</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addThreeSquareAddFiveTakeSquareRoot</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.sqrt(<span class="built_in">Math</span>.pow(x+<span class="number">3</span>, <span class="number">2</span>)+<span class="number">5</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//막 이런 함수 별명을 써서 간단하게 바꾸면...</span></div><div class="line"><span class="keyword">const</span> f = addThreeSquareAddFiveTakeSquareRoot;</div><div class="line"><span class="comment">//여기서는 함수명 다음에 괄호를 안쓴다!</span></div><div class="line"><span class="keyword">const</span> answer = (f(<span class="number">5</span>) + f(<span class="number">2</span>)) /f(<span class="number">7</span>);</div></pre></td></tr></table></figure>
 
         
         </div>
@@ -294,7 +475,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjaptkgoh0014gcubkz0vidb5" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjbg2w4qi001dr8ubu8vtun61" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -476,7 +657,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjaptkgo20006gcubp1e1otru" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjbg2w4q2000ir8ubb10akhfe" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -612,7 +793,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjaptkgo2000lgcubx2f9wnst" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjbg2w4q0000fr8ub20ishhim" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -758,7 +939,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjaptkgpa001igcubx94o9bc5" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjbg2w4qw0025r8ub1ghoz2iw" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -926,7 +1107,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjaptkgoh0011gcubs7lqnvne" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjbg2w4qg0019r8ubm9iwmpxz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1089,7 +1270,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjaptkgpc001lgcub5yz9ucs3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjbg2w4qe0016r8ubwc02e075" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1230,7 +1411,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cjaptkgoh000xgcubuh8nl7jq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cjbg2w4qa000wr8ub21xsjatr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1390,7 +1571,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cjaptkgoh000ugcubgh543wly" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cjbg2w4ql001kr8ubat0e0emo" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1532,7 +1713,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cjaptkgo20005gcub3e5irquh" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cjbg2w4px000cr8ub9ubvk5y6" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1610,153 +1791,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-JS-Compare-Numbers" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/09/04/JS-Compare-Numbers/">자바스크립트 숫자 비교할때 주의할 부분</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/04/JS-Compare-Numbers/">
-            <time datetime="2017-09-03T15:06:56.000Z" itemprop="datePublished">2017-09-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JS/">JS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="NaN은-무엇과도-같지-않음"><a href="#NaN은-무엇과도-같지-않음" class="headerlink" title="NaN은 무엇과도 같지 않음"></a>NaN은 무엇과도 같지 않음</h3><p>NaN값은 그 자신을 포함하여 무엇과도 같지 않다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>   <span class="comment">//false</span></div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>   <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<p>그럼 어떻게 숫자가 NaN인지 알아보느냐!<br><code>inNaN(x)</code>함수를 사용하면 된다. isNaN 함수는 x가 NaN일때 true를 반환한다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> NotNaN = <span class="string">"string"</span>;</div><div class="line"><span class="built_in">isNaN</span>(NotNan);   <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<hr>
-<h3 id="소수-비교하기"><a href="#소수-비교하기" class="headerlink" title="소수 비교하기"></a>소수 비교하기</h3><p><code>자바스크립트의 숫자는 모두 더블형식</code><br>더블형식은 실수를 말하는데 실수는 0.3000000000000000000000004처럼 작은 값을 포함하기도 한다. 그렇기 때문에 실수를 비교할 때에는 Number.EPSILON의 숫자형 상수를 이용하여 비교한다고 한다. </p>
-<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON" title="Number.EPSILON" target="_blank" rel="external">MDN</a>에서는 </p>
-<blockquote>
-<p>Number.EPSILON 속성(property)은 Number 형으로 표현될 수 있는 1과 1보다 큰 값 중에서 가장 작은 값의, 차입니다.</p>
-</blockquote>
-<p>라고 설명하고 있다. 두개의 더블(실수)형식이 같다고 할 수 있을 만큼 가까운 숫자인지 판단할때 일반적으로 사용하는 방법이라고 하니 걍 익혀두는게 좋을 듯</p>
-<p>아래 예시로 좀 더 자시헤 보도록 할까…<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">    n += <span class="number">0.1</span>;</div><div class="line">    <span class="keyword">if</span>(n === <span class="number">0.3</span>) <span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Stopped at <span class="subst">$&#123;n&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
-<p>이렇게 하면 0.3에 멈출거라고 생각하지만 컴퓨터는 값을 내놓지 못하고 끝없이 돌아갔다. 창 멈춤…ㄷㄷㄷ</p>
-<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ETBUuDySjDQXENuviwGUhlN1Z8fa-j0ttx9_9Ax44ppnMQBs" alt="ㅎㄷㄷ"></p>
-<p>그래서 Number.EPSILON과 관계연산식을 써서 <code>느슨하게</code> 비교해야함.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> n = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">    n += <span class="number">0.1</span>;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(n<span class="number">-0.3</span>) &lt; <span class="built_in">Number</span>.EPSILON) <span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Stopped at <span class="subst">$&#123;n&#125;</span>`</span>);   <span class="comment">//Stopped at0.30000000000000004</span></div></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cjaptkgo20004gcub6tx8s8a6" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">다음 &raquo;</a>
     </nav>
@@ -1770,6 +1804,25 @@ ga('send', 'pageview');
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/20/vega-lite-01/" class="thumbnail">
+    
+    
+        <span style="background-image:url(css/images/vega-lite.jpg)" alt="vega-lite로 그래프를 그려보자." class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
+                            <p class="item-title"><a href="/2017/12/20/vega-lite-01/" class="title">vega-lite로 그래프를 그려보자.</a></p>
+                            <p class="item-date"><time datetime="2017-12-20T13:08:16.000Z" itemprop="datePublished">2017-12-20</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1847,25 +1900,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/21/js-array/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://shaunlebron.github.io/solar-system-of-js/js.svg)" alt="자바스크립트 array" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
-                            <p class="item-title"><a href="/2017/10/21/js-array/" class="title">자바스크립트 array</a></p>
-                            <p class="item-date"><time datetime="2017-10-21T05:14:29.000Z" itemprop="datePublished">2017-10-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1875,7 +1909,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/design/">design</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1884,7 +1918,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -1893,7 +1927,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1902,7 +1936,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
+            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
         </div>
     </div>
 
