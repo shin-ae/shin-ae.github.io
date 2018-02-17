@@ -168,7 +168,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                28
+                26
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
@@ -221,284 +221,6 @@ ga('send', 'pageview');
 
             
             <section id="main">
-    <article id="post-zeplin-02" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/08/zeplin-02/">제플린 기본 단위를 바꿔보자!</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/08/zeplin-02/">
-            <time datetime="2017-08-08T11:57:44.000Z" itemprop="datePublished">2017-08-08</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/design/">design</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h4 id="문제인식"><a href="#문제인식" class="headerlink" title="문제인식"></a>문제인식</h4><p>디자인 작업을 끝내고 제플린에 무사히 Export를 했습니다. 개발자분께도 그 사실을 알려드렸는데 예상 밖의 요청이 들어오게 됩니다. </p>
-<blockquote>
-<p>제플린에 나오는 기본 단위를 바꿔주실 수 있으신가요?</p>
-</blockquote>
-<p>그제서야 확인해보니 제플린에서 기본 단위가 px이 아닌 dp였습니다.<br><img src="/css/images/zeplin_04.png" alt="alt text"><br>아니 세상에 dp라는 단위는 도대체 무엇인가…거기에 폰트 사이즈는 sp였습니다. 세상에 마상에…</p>
-<ul>
-<li>일단, dp와 sp에 대해서 알고 가도록 하겠습니다.<br>dp(Density Independent Pixel), sp(Scale-independent Pixel)는 안드로이드에서 나온 단위입니다. 해상도에 관계없이 절대값이던 px과는 달리 해상도에 맞춰 깨지지 않고 나옵니다. 단위에는 dp, text나 line-height같은 글자관련 요소에는 sp를 씁니다. </li>
-</ul>
-<p>굳이 단위를 바꿔서 해야 하나는 질문도 있습니다만 일단 바꾸기로 합니다. </p>
-<h4 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h4><p>제플린에서 dp, sp로 단위가 나오는 이유는 처음 제플린에 export를 할때 설정을 잘못해서 그랬습니다. wep을 선택하면 px이 기본으로 나오지만 app을 선택하면 dp와 sp로 단위가 나옵니다.<br><img src="/css/images/zeplin_05.png" alt="alt text"><br>위 그림에서 보시면 프로젝트 화면에서 Android라고 설정되어 있는 것을 볼 수  있습니다. </p>
-<h4 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h4><p>제플린 유료 회원이시면 여러개의 프로젝트를 만들 수 있어서 새로 하나 만들면 됩니다만 무료회원이시라면 프로젝트를 삭제하시고 다시 만드셔야 합니다.<br>제플린에서 <code>Create my first project</code>를 누르시고 type를 설정하시는 창에서 wep을 선택해 줍니다. 그러면 px을 기본으로 하는 프로젝트를 생성할 수 있습니다. 참고로 pt단위를 쓰고 싶으시면 ios를 선택하시면 됩니다.<br><img src="/css/images/zeplin_06.png" alt="alt text"></p>
-<h4 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h4><p>제플린은 중간에 단위를 바꿀 수 없기 때문에 처음에 올리시기 전에 개발자와 단위에 대해서 상의하시는 것이 좋을 것 같습니다. 또한 한 프로젝트에 다양한 단위를 사용할 수는 없으니 필요하다면 제플린 유료 가입도 생각해 보셔야 할 것 같습니다.  </p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/08/08/zeplin-02/" data-id="cjdrfhbkp0020lgvaw6x3toqb" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/08/08/zeplin-02/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/08/08/zeplin-02/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-zeplin-01" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/08/zeplin-01/">제플린에 Export 되지 않는다.</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/08/zeplin-01/">
-            <time datetime="2017-08-08T11:24:39.000Z" itemprop="datePublished">2017-08-08</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/design/">design</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h4 id="문제인식"><a href="#문제인식" class="headerlink" title="문제인식"></a>문제인식</h4><p>photoshop CC버전에서는 처음 시작할 때 웹, 인쇄, 모바일 등 작업을 선택 할 수 있는데 그것을 선택하지 않고 작업을 했을 시에 제플린에 추가가 되지 않았습니다. 즉, 레이어 단위로는 제플린에 추가가 되지 않는 것이죠. 폴더 단위도 마찮가지 입니다. </p>
-<h4 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h4><p>원인을 찾기 위해 제플린의 확장 창을 봅니다. 제플린의 확장 창은 <code>창 &gt; 확장</code>에서 찾으실 수 있습니다.<br><img src="/css/images/zeplin_01.png" alt="alt text"><br>보시면 <code>No artboard selected</code>되어 있는 것을 볼 수 있습니다.<br>artboard는 대지입니다. 대지가 없어서 제플린에 추가되지 않는 것입니다.<br>참고로 제플린은 CC버전 이상에서 사용하실 수 있는데 CC버전 이하에서는 대지라는 기능이 없으니 당연하다고 할 수 있습니다. </p>
-<h4 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h4><p>해결방법은 간단합니다. 대지를 추가시켜 주시면 됩니다. 대지는 레이어 창에서 추가 하실 수 있습니다.<br><img src="/css/images/zeplin_02.png" alt="alt text"><br>옆에 단추를 누르시고 새대지를 추가하셔서 작업 사이즈에 맞게 조절하시면 됩니다.</p>
-<h4 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h4><p>제플린은 대지 안에 있는 요소들을 인식하여 Export합니다. 제플린으로 개발자와 공유해야 하는 작업이라면 처음에 만드실때 웹이나 앱을 선택하시면 편리하게 작업하실 수 있습니다.<br><img src="/css/images/zeplin_03.png" alt="alt text"> </p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/08/08/zeplin-01/" data-id="cjdrfhbkq0022lgva4okee1bj" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/08/08/zeplin-01/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/08/08/zeplin-01/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-hexo-img-error" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -565,7 +287,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/05/hexo-img-error/" data-id="cjdrfhbk60019lgva4owqhrox" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/05/hexo-img-error/" data-id="cjdrfk95g00150cvaso5jte7l" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -719,7 +441,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/30/c3-02/" data-id="cjdrfhbiu0001lgva67e1qvlj" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/30/c3-02/" data-id="cjdrfk94m00050cvahd7nsdbo" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -870,7 +592,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/30/c3/" data-id="cjdrfhbj20006lgvanjbmfv86" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/30/c3/" data-id="cjdrfk94q000a0cvap96vglbk" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1184,7 +906,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/26/markDown/" data-id="cjdrfhbkn001vlgva0mxhw03s" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/26/markDown/" data-id="cjdrfk95r001l0cvae6yq890n" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1329,7 +1051,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/17/Hexo-01/" data-id="cjdrfhbiz0004lgvaljwac4x6" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/17/Hexo-01/" data-id="cjdrfk94l00040cvaab2xlnd1" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1473,7 +1195,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/07/16/Hexo-start/" data-id="cjdrfhbjb000glgvaopa00od7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/07/16/Hexo-start/" data-id="cjdrfk94a00000cva8kp6bplz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1568,44 +1290,6 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/17/test/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/17/test/" class="title">test</a></p>
-                            <p class="item-date"><time datetime="2018-02-17T12:53:28.000Z" itemprop="datePublished">2018-02-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/17/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/17/hello-world/" class="title">Hello World</a></p>
-                            <p class="item-date"><time datetime="2018-02-17T12:21:35.932Z" itemprop="datePublished">2018-02-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2017/12/20/vega-lite-01/" class="thumbnail">
     
     
@@ -1660,6 +1344,44 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/04/es6-04/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634)" alt="es6에서의 객체" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2017/11/04/es6-04/" class="title">es6에서의 객체</a></p>
+                            <p class="item-date"><time datetime="2017-11-04T14:50:03.000Z" itemprop="datePublished">2017-11-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/03/js-obj/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://shaunlebron.github.io/solar-system-of-js/js.svg)" alt="객체와 객체지향 프로그래밍" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2017/11/03/js-obj/" class="title">객체와 객체지향 프로그래밍</a></p>
+                            <p class="item-date"><time datetime="2017-11-03T13:26:35.000Z" itemprop="datePublished">2017-11-03</time></p>
+                        </div>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -1678,7 +1400,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
