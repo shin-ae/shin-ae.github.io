@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="shin">
 <meta property="og:description" content="사건의 발단발단… 이라고 까지는 뭐하지만 내가 요즘 회사 내 프로젝트를 하느라고 정신이 없음…맨날 포토샵하고 제플린, 필요하면 인비전까지 손대고 있기는 한데 시간이 없어서 개발까지 살펴보지 못함…. 그래서 회사에서 개발하는 것 손가락만 빨며 보기 일쑤인데 그것마저도 회사 전체가 바빠서 개발자들한테 물어보기도 뭣함…그런데 나도 개발이란 것을 해보고 싶음. 그">
 <meta property="og:image" content="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png">
-<meta property="og:updated_time" content="2018-03-11T15:19:45.086Z">
+<meta property="og:updated_time" content="2018-03-11T15:27:49.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="노드 시작하기">
 <meta name="twitter:description" content="사건의 발단발단… 이라고 까지는 뭐하지만 내가 요즘 회사 내 프로젝트를 하느라고 정신이 없음…맨날 포토샵하고 제플린, 필요하면 인비전까지 손대고 있기는 한데 시간이 없어서 개발까지 살펴보지 못함…. 그래서 회사에서 개발하는 것 손가락만 빨며 보기 일쑤인데 그것마저도 회사 전체가 바빠서 개발자들한테 물어보기도 뭣함…그런데 나도 개발이란 것을 해보고 싶음. 그">
@@ -289,19 +289,15 @@ ga('send', 'pageview');
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> calc = <span class="built_in">require</span>(<span class="string">'./calc.js'</span>);</div><div class="line"><span class="comment">//내부 모듈은 모듈의 위치를 적어준다.</span></div><div class="line"><span class="built_in">console</span>.log(calc.add(<span class="number">20</span>, <span class="number">45</span>));</div><div class="line"><span class="comment">//65</span></div></pre></td></tr></table></figure>
 <h3 id="외부-모듈-가져다-써보기"><a href="#외부-모듈-가져다-써보기" class="headerlink" title="외부 모듈 가져다 써보기"></a>외부 모듈 가져다 써보기</h3><p>외부 모듈을 만들기 전에 일단 어떻게 외부 모듈을 가져와서 쓸 수 있는지 알아보자. </p>
 <ol>
-<li>폴더를 만들어서 노드 프로젝트로 등록하자.<br>mymoment라는 폴더를 생성. 이 위치에 <code>npm init</code>라는 명령어로 package.json 파일을 생성. 패키지 제이슨 파일에서 이 프로젝트에 쓰이는 외부 패키지들을 관리(?)할 수 있다.(“dependencies”) 이 패키지 파일을 프로젝트 별로 생성하게 되는데 그 이유는 프로젝트별로 사용하는 패키지와 버전이 각기 다르기 때문</li>
-</ol>
-<ul>
-<li>script에서는 특정 동작에 대한 명령어를 만들 수 있다. ex)hexo s *</li>
-</ul>
-<ol>
-<li>moment.js 를 설치해보자.<br>mymoment 폴더 위치에 <code>npm install moment --save</code> 를 입력. 그럼 자동으로 모멘트 js가 깔린다. 참고로 모멘트는 날짜 계산을 쉽게 도와주는 모듈. 모듈을 설치하면 package.json 파일의 dependencies에 <code>&quot;moment&quot;: &quot;^2.21.0&quot;</code> 가 추가된 것을 확인할 수 있다. </li>
-</ol>
+<li><p>폴더를 만들어서 노드 프로젝트로 등록하자.<br>mymoment라는 폴더를 생성. 이 위치에 <code>npm init</code>라는 명령어로 package.json 파일을 생성. 패키지 제이슨 파일에서 이 프로젝트에 쓰이는 외부 패키지들을 관리(?)할 수 있다.(“dependencies”) 이 패키지 파일을 프로젝트 별로 생성하게 되는데 그 이유는 프로젝트별로 사용하는 패키지와 버전이 각기 다르기 때문<br><em>script에서는 특정 동작에 대한 명령어를 만들 수 있다. ex)hexo s</em></p>
+</li>
+<li><p>moment.js 를 설치해보자.<br>mymoment 폴더 위치에 <code>npm install moment --save</code> 를 입력. 그럼 자동으로 모멘트 js가 깔린다. 참고로 모멘트는 날짜 계산을 쉽게 도와주는 모듈. 모듈을 설치하면 package.json 파일의 dependencies에 <code>&quot;moment&quot;: &quot;^2.21.0&quot;</code> 가 추가된 것을 확인할 수 있다. </p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"mymoment"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"01.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"moment"</span>: <span class="string">"^2.21.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>moment.js불러오기</li>
-</ol>
+</li>
+<li><p>moment.js불러오기</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moment  = <span class="built_in">require</span>(<span class="string">'moment'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nextMonth</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> moment().add(<span class="number">1</span>, <span class="string">'M'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;nextMonth&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>모멘트를 불러온 후, 다음달을 계산하는 함수를 생성해서 내보내는 모듈<br>이렇게 하면 이제 외부 모듈을 가져와서 사용할 수 있다. </p>
 <p><img src="http://mblogthumb4.phinf.naver.net/20140509_175/raintok_1399627455387846nX_JPEG/KakaoTalk_20140507_214422886.jpg?type=w2" alt="재미지당!!!"></p>
 <h3 id="모듈을-만들어보자"><a href="#모듈을-만들어보자" class="headerlink" title="모듈을 만들어보자"></a>모듈을 만들어보자</h3><ol>
@@ -327,7 +323,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjemy620g001sjgva6pgorurb" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjemyaxfb001onovaaqvbajwx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
