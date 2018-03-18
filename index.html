@@ -168,11 +168,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                27
+                28
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                26
+                27
                 <span>태그</span>
             </div>
         </div>
@@ -221,6 +221,187 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-node-02" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/03/18/node-02/">노드로 간단한 웹서버 만들기</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/18/node-02/">
+            <time datetime="2018-03-18T12:48:12.000Z" itemprop="datePublished">2018-03-18</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/node-express-설치-미들웨어/">node, express 설치, 미들웨어</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="간단한-웹서버-만들기"><a href="#간단한-웹서버-만들기" class="headerlink" title="간단한 웹서버 만들기"></a>간단한 웹서버 만들기</h2><p>노드에는 기본으로 http모듈이 있어서 서버 객체를 만들 수 있는데 이 서버 객체는 웹서버 기능을 담당한다. </p>
+<h5 id="일단-폴더-하나를-npm-init-명령어로-노드-프로젝트를-만든다"><a href="#일단-폴더-하나를-npm-init-명령어로-노드-프로젝트를-만든다" class="headerlink" title="일단 폴더 하나를 npm init 명령어로 노드 프로젝트를 만든다."></a>일단 폴더 하나를 <code>npm init</code> 명령어로 노드 프로젝트를 만든다.</h5><h5 id="그리고-파일을-하나-만든다"><a href="#그리고-파일을-하나-만든다" class="headerlink" title="그리고 파일을 하나 만든다."></a>그리고 파일을 하나 만든다.</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="comment">//웹 서버 객체를 만듦.</span></div><div class="line"><span class="keyword">var</span> server = http.createServer();</div><div class="line"></div><div class="line"><span class="comment">//웹 서버를 시작하여 3000번 포트에서 대기</span></div><div class="line"><span class="keyword">var</span> port = <span class="number">3000</span>;</div><div class="line">server.listen(port, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'웹 서버가 시작되었습니다.'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>여기까지 코드를 작성하고 브라우저를 실행시켜 보자. 주소는 <code>localhost:3000</code>.<br>무엇이 보일까? <em> 안보인다. 아무것도</em> 왜냐하면 서버를 시작만 했지 클리언트에 던져주는 정보가 아무것도 없기 때문.<br> 다만 명령 프롬프트에서<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> PS C:\workspace\test_02\node_02&gt; node index.js</div><div class="line">웹 서버가 시작되었습니다.</div></pre></td></tr></table></figure></p>
+<p> 라는 정보를 볼 수 있다. 연결이 되긴 한 모양. </p>
+<p>그럼 어떻게 정보를 요청할 수 있을지 이벤트를 살펴보자. </p>
+<ul>
+<li>connection : 클라이언트가 접속하여 연결이 만들어질 때 발생하는 이벤트</li>
+<li>request : 클라이언트가 요청할 때 발생하는 이벤트</li>
+<li>close : 서버를 종료할 때 발생하는 이벤트</li>
+</ul>
+<p>위의 코드 아래에 다음 코드를 넣고 실행시켜보자.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">server.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> addr = socket.address();</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'클라이언트가 접속했습니다. :'</span>, addr.address, addr.port);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.on(<span class="string">'request'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'클라이언트 요청이 들어왔습니다.'</span>);</div><div class="line">    <span class="comment">// console.dir(req);</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.on(<span class="string">'close'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'서버가 종료됩니다.'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>이렇게 하면 여전히 브라우저의 화면에서는 아무것도 나오지 않지만 명령프롬프트에서는 다음과 같이 출력되는 것을 확인 할 수 있다. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">PS C:\workspace\test_02\node_02&gt; node index.js</div><div class="line">웹 서버가 시작되었습니다.</div><div class="line">클라이언트가 접속했습니다. : ::1 3000</div><div class="line">클라이언트 요청이 들어왔습니다.</div></pre></td></tr></table></figure>
+<p>눈에 보이지는 않지만 접속 함으로서 요청이 들어오긴 한 모양. </p>
+<hr>
+<blockquote>
+<h5 id="웹-서버에-요청을-보내는-방식-method"><a href="#웹-서버에-요청을-보내는-방식-method" class="headerlink" title="웹 서버에 요청을 보내는 방식(method)"></a>웹 서버에 요청을 보내는 방식(method)</h5><ul>
+<li>GET :  header에 요청정보를 넣어 보냄</li>
+<li>POST : 본문에 요청정보를 넣어 보냄</li>
+<li>PUT </li>
+<li>DELETE </li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="익스프레스로-웹-서버-만들기"><a href="#익스프레스로-웹-서버-만들기" class="headerlink" title="익스프레스로 웹 서버 만들기"></a>익스프레스로 웹 서버 만들기</h2><p>실무에서 웹 서버를 구성할 때에는 <code>express</code>모듈을 주로 사용.<br>express모듈을 사용하더라도 express모듈은 http모듈을 기초로 만들어진 것.<br>익스프레스 모듈에서는 미들웨어와 라우터를 제공하는데 이걸 알면 시능을 만드는게 훨씬 편리해 진다고 한다. </p>
+<h4 id="그럼-express모듈-설치"><a href="#그럼-express모듈-설치" class="headerlink" title="그럼 express모듈 설치"></a>그럼 express모듈 설치</h4><p><code>npm install express --save</code>로 익스프레스 모듈을 설치 한다.</p>
+<h4 id="파일-생성해서-익스프레스-시작"><a href="#파일-생성해서-익스프레스-시작" class="headerlink" title="파일 생성해서 익스프레스 시작"></a>파일 생성해서 익스프레스 시작</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//express 기본 모듈 불러오기</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line">    , http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="comment">//express 객체 생성</span></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line"><span class="comment">//기본 포트를 app 객체에 속성으로 설정</span></div><div class="line">app.set(<span class="string">'port'</span>, process.env.PORT || <span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<p>여기에서 축약한 형태가 들어가면서 눈에 잘 안보이는 형태가 있는데 이것은 <code>var data = {};
+data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 됨. <code>||</code>이 연산자는 or연산자로 지금은 3000으로 들어가 있지만 만약에 process.env.PORT 가 설정되어 있다면 일단 그것으로 셋팅이 됨.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//express 서버 시작</span></div><div class="line">http.createServer(app).listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'익스프레스 서버를 시작했습니다.'</span> + app.get(<span class="string">'port'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>이렇게 작성하고 실행하면<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">익스프레스 서버를 시작했습니다.3000</div></pre></td></tr></table></figure></p>
+<p>는 메세지를 볼 수 있당.</p>
+<hr>
+<blockquote>
+<h5 id="express-server-method"><a href="#express-server-method" class="headerlink" title="express server method"></a>express server method</h5><ul>
+<li>set(name, value) : 서버 설정을 위한 속성을 지정, set()메소드로 지정한 속성은 get()메소드로 꺼내 확인할 수 있음<br>  └ env, views(뷰들이 들어있는 폴더, 폴더배열 설정), view engine(디폴트 뷰엔진 설정)</li>
+<li>get(name) : 서버 설정을 위해 지정한 속성을 꺼내옴</li>
+<li>use([path], function[,function…]) : 미들웨어 함수를 사용</li>
+<li>get([path], function) : 특정 패스로 요청된 정보를 처리</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="미들웨어-등록"><a href="#미들웨어-등록" class="headerlink" title="미들웨어 등록"></a>미들웨어 등록</h4><p>미들웨어는 중간에 요청이 있으면 추가로 서버에서 정보를 던져주는 것 같다.<br>라우트는 그쪽으로 연결 해 주는 것. <em> 아직 잘 모르겠는 것. 느낌같은 느낌</em></p>
+<p><code>use()</code>메소드를 이용해서 미들웨어로 등록해보자.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'첫번째 미들웨어에서 요청을 처리함'</span>);</div><div class="line"></div><div class="line">    res.writeHead(<span class="string">'200'</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html;charset=utf8'</span>&#125;);</div><div class="line">    res.end(<span class="string">'&lt;h1&gt;Expess 서버에서 응답한 결과입니다.&lt;/h1&gt;'</span>);</div><div class="line"></div><div class="line">    <span class="comment">//여러 개의 미들웨어 등록 시</span></div><div class="line">    next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>이렇게 하면 브라우저에서 h1으로 문장이 나오는 것을 확인 할 수 있다.<br>명령 프롬프트에서는 ‘첫번째 미들웨어에서 요청을 처리함’ 이라는 문장 확인.</p>
+<h4 id="static-미들웨어"><a href="#static-미들웨어" class="headerlink" title="static 미들웨어"></a>static 미들웨어</h4><p>[public]폴더 안에 있는 파일을 사이트의 /public 패스로 접근하도록 만들고 싶다면 <code>static()</code>메소드를 호출할 때 아래와 같이 패스를 정해주면 됨.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//path 활성화</span></div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>); </div><div class="line"></div><div class="line"><span class="comment">//패스 정해주기</span></div><div class="line">app.use(<span class="string">'/public'</span>, express.static(path.join(__dirname, <span class="string">'./public'</span>)));</div></pre></td></tr></table></figure></p>
+<h4 id="body-parser-미들웨어"><a href="#body-parser-미들웨어" class="headerlink" title="body-parser 미들웨어"></a>body-parser 미들웨어</h4><p>body-parser미들웨어는 post로 요청했을 때, 요청 파라미터를 확인 할 수 있게 만들어준다.<br>클라이언트가 Post방식으로 요청할 경우 본문 영역에 들어있는 요청 파라미터들을 파싱하여 요청 객체의 body속성에 넣어줌.</p>
+<p><code>npm install body-parser --save</code> 로 설치하고<br><code>var bodyParser = require(&#39;body-parser&#39;);</code>를 위에 넣어 활성화 </p>
+<p>public폴더 안에 <code>login.html</code> 파일을 만들어보자.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"ko"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>아이디<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>패스워드<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>전송<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>그리고 app.js엔<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//body-parser를 사용해 application/x-www-form-urlencoded 파싱</span></div><div class="line">app.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>:<span class="literal">false</span>&#125;));</div><div class="line"></div><div class="line"><span class="comment">//body-parser를 사용해 application/json 파싱</span></div><div class="line">app.use(bodyParser.json());</div><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'첫번째 미들웨어에서 요청을 처리함'</span>);</div><div class="line">    <span class="built_in">console</span>.log(req.body.id);</div><div class="line">    <span class="built_in">console</span>.log(req.body.password);</div><div class="line"></div><div class="line">    <span class="comment">//json형식으로 받은 id와 패스워드를 body로 보내줌</span></div><div class="line">    res.send(&#123;<span class="attr">id</span>:req.body.id, <span class="attr">password</span>:req.body.password&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>을 넣는다. <code>localhost:3000/public/login.html</code> 에서 form에 정보를 입력하고 전송하면 입력된 정보를 다시 볼 수 있다. </p>
+<h4 id="요청-라우팅하기"><a href="#요청-라우팅하기" class="headerlink" title="요청 라우팅하기"></a>요청 라우팅하기</h4><p>클라이언트에서 요청한 요청 패스에 따라 실행될 함수는 라우터(router) 객체를 사용해 등록함. route() 메소드가 있어서 요청 패스를 지정할 수 있으며 get()이나 post()메소드를 호출하면 실행될 함수를 등록할 수 있음</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//라우터 객체 참조</span></div><div class="line"><span class="keyword">var</span> router = express.Router();</div><div class="line"></div><div class="line"><span class="comment">//라우팅 함수 등록</span></div><div class="line">router.route(<span class="string">'/process/login'</span>).get(...);</div><div class="line">router.route(<span class="string">'/process/login'</span>).post(...);</div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment">//라우터 객체를 app객체에 등록</span></div><div class="line">app.use(<span class="string">'/'</span>, router);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</div><div class="line"><span class="keyword">var</span> hbs = <span class="built_in">require</span>(<span class="string">'express-handlebars'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line">app.set(<span class="string">'port'</span>, process.env.PORT || <span class="number">3000</span>);</div><div class="line"><span class="comment">// var data = &#123;&#125;;</span></div><div class="line"><span class="comment">// data.port = 3000;</span></div><div class="line"><span class="comment">// console.log(data);</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> router = express.Router();</div><div class="line"></div><div class="line">http.createServer(app).listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'익스프레스 서버를 시작했습니다.'</span> + app.get(<span class="string">'port'</span>));</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//엔진등록</span></div><div class="line">app.engine(<span class="string">'html'</span>, hbs(&#123;<span class="attr">extname</span>: <span class="string">".html"</span>&#125;));</div><div class="line"></div><div class="line"><span class="comment">//view 폴더랑 public폴더랑 같이 잡아놓음</span></div><div class="line">app.set(<span class="string">'views'</span>, path.join(__dirname, <span class="string">'./public'</span>));</div><div class="line"></div><div class="line"><span class="comment">//view 템플릿 엔진을 html로 등록, html, ejs, pug로 등록할 수 있다.</span></div><div class="line">app.set(<span class="string">'view engine'</span>,<span class="string">'html'</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//router 객체에 route를 등록</span></div><div class="line">router.route(<span class="string">'/test'</span>).get(<span class="function">(<span class="params">req, res</span>)=&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'test work!!'</span>);</div><div class="line">    <span class="comment">// res.send(&#123;name:'shin', age:32&#125;);</span></div><div class="line">    res.render(<span class="string">'index3.html'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//미들웨어에 router객체를 등록</span></div><div class="line">app.use(<span class="string">'/'</span>, router);</div></pre></td></tr></table></figure>
+<p>이렇게 작성하고 <code>localhost:3000/test</code>에 들어갈 경우 명령 프롬프트엔 <code>test work!!</code>가 출력되고 public폴더 아래에 있는 <code>index3.html</code> 파일 화면이 보여지게 된다.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2018/03/18/node-02/" data-id="cjewtag88001jmovauuoziiwu" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2018/03/18/node-02/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2018/03/18/node-02/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-node-01" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -317,7 +498,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjemyaxfb001onovaaqvbajwx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjewtag800015mova8owq1z7d" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -498,7 +679,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjemyaxfc001rnovai4xczg6n" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjewtag8e001vmova3otg6hu0" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -649,7 +830,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjemyaxf0001cnova647cgzxk" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjewtag84001cmovadgg97q9z" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -831,7 +1012,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjemyaxeb000mnovau0wxesx9" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjewtag7p000lmovaplrob85a" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -967,7 +1148,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjemyaxe9000inova4uejg1ba" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjewtag7l000fmova36atzqa4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1113,7 +1294,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjemyaxf4001fnovasqhe5h48" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjewtag8b001pmovaglsb0ee3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1281,7 +1462,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjemyaxey001anovaeokrl3z2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjewtag86001fmova5ywsxzqg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1444,7 +1625,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjemyaxew0016novazserhizu" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjewtag810019movavcptptbh" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1585,7 +1766,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cjemyaxeh000wnova96tbuyrg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cjewtag7u000vmova8xzl0qrh" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1663,166 +1844,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-ex6-04" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/09/16/ex6-04/">es6에서 추가된 함수 기능</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/16/ex6-04/">
-            <time datetime="2017-09-15T16:32:50.000Z" itemprop="datePublished">2017-09-16</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JS/">JS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>es6에서 추가된 함수의 기능을 살펴보기 전에 함수의 기본을 알고 가도록 하겠다!</p>
-<p>함수는 기본적으로 이렇게 쓰인다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello world!"</span>;</div><div class="line">&#125;</div><div class="line">hello();   <span class="comment">//"Hello world!"</span></div></pre></td></tr></table></figure>
-<p>자바스크립트는 함수를 호출하지 않고 다른 값과 마찬가지로 참조하기만 할 수 있다는 특징을 가지고 있는 유연한 언어. 그렇기 때문에 함수를 변수에 할당하여 다른 이름으로 함수를 호출할 수도 있다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> f = hello;</div><div class="line">f();   <span class="comment">//"Hello world!"</span></div></pre></td></tr></table></figure>
-<p>또한 함수를 객체 프로퍼티나 배열요소에도 할당 할 수 있다. </p>
-<hr>
-<p>함수를 호출하면서 정보를 전달 할 떄, 즉 함수에 정보를 전달하려면 매개변수를 이용한다. 매개변수는 함수가 호출되기 전에는 존재하지 않는다는 점을 제외하면 일반적인 변수와 마찮가지.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">avg</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div></pre></td></tr></table></figure>
-<p>자바스크립트에서는 다른 함수들 과는 다르게 매개변수 갯수와 상관없이 몇개의 매개변수를 전달해도 됨. 정해진 매개 변수에 값을 제공하지 않으면 암시적으로 <code>undefined</code>가 할당된다</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`f: x=<span class="subst">$&#123;x&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line">f();   <span class="comment">//"f: x=undefined"</span></div></pre></td></tr></table></figure>
-<h3 id="ES6에-추가된-매개변수-기본값-지정하기"><a href="#ES6에-추가된-매개변수-기본값-지정하기" class="headerlink" title="ES6에 추가된 매개변수 기본값 지정하기"></a>ES6에 추가된 매개변수 기본값 지정하기</h3><p>일반적으로 매개변수 값을 지정하지 않으면 위에처럼 undefined가 값으로 할당된다. ES6에서는 기본값을 지정 할 수 있게 되었다. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a,b = <span class="string">"blabla"</span>,c=<span class="number">3</span></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;a&#125;</span> - <span class="subst">$&#123;b&#125;</span> - <span class="subst">$&#123;c&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line">f(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>);   <span class="comment">//"5 - 6 - 7"</span></div><div class="line">f(<span class="number">5</span>, <span class="number">6</span>);   <span class="comment">//"5 - 6 - 3"</span></div><div class="line">f(<span class="number">5</span>);   <span class="comment">//"5 - blabla - 3"</span></div><div class="line">f();   <span class="comment">//"undefined - blabla - 3"</span></div></pre></td></tr></table></figure>
-<h3 id="화살표-함수"><a href="#화살표-함수" class="headerlink" title="화살표 함수"></a>화살표 함수</h3><p>ES6에서 새로만든 화살표 표기법은 <code>function</code>이라는 단어와 중괄호 숫자를 줄이려고 고안된 단축 문법입니다. </p>
-<p>화살표 문법은 다음과 같은 특징을 가진다.</p>
-<ol>
-<li>function을 생략해도 됨</li>
-<li>함수에 매개변수가 단 하나 뿐이라면 괄호(())도 생략할 수 있음</li>
-<li>함수 바디가 표현식 하나라면 중괄호와 return문도 생략할 수 있다. </li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> f1 = fuction() &#123;<span class="keyword">return</span> <span class="string">"hello"</span>;&#125;</div><div class="line"><span class="comment">//또는</span></div><div class="line"><span class="keyword">const</span> f1 = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">"hello"</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;<span class="keyword">return</span> <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>;&#125;</div><div class="line"><span class="comment">//또는</span></div><div class="line"><span class="keyword">const</span> f2 = <span class="function"><span class="params">name</span> =&gt;</span> <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> f3 = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a+b&#125;;</div><div class="line"><span class="comment">//또는 </span></div><div class="line"><span class="keyword">const</span> f3 = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a+b;</div></pre></td></tr></table></figure>
-<p>화살표 함수는 항상 익명함수이다. 만약 이름 붙인 함수가 필요하다면 평소에 하던 방식으로 함수를 만들면 된다. </p>
-<p>화살표 함수는 위의 특징 말고도 </p>
-<ol>
-<li>this가 다른 변수와 마찬가지로 정적으로 묶인다. </li>
-<li>객체사용자로 사용할 수 없다.</li>
-<li>arguments변수도 사용할 수 없다. 확산 연산자가 ES6에서 생겼으니 필요없다고 하기도 한다. </li>
-</ol>
-<p>처음에 만들었던 함수를 화살표 함수로 바꾸어 보장<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">avg</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> avg = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> (a+b)/<span class="number">2</span></div><div class="line">    &#125;;</div><div class="line">avg(<span class="number">5</span>, <span class="number">10</span>);   <span class="comment">//7.5</span></div></pre></td></tr></table></figure></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cjemyaxer0010novalf8bm09p" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/09/16/ex6-04/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/09/16/ex6-04/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">다음 &raquo;</a>
     </nav>
@@ -1836,6 +1857,25 @@ ga('send', 'pageview');
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/18/node-02/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png)" alt="노드로 간단한 웹서버 만들기" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/03/18/node-02/" class="title">노드로 간단한 웹서버 만들기</a></p>
+                            <p class="item-date"><time datetime="2018-03-18T12:48:12.000Z" itemprop="datePublished">2018-03-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1913,25 +1953,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/11/04/es6-04/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.slidesharecdn.com/4-es6metbabel-150513100342-lva1-app6891/95/es6-with-babeljs-1-638.jpg?cb=1431511634)" alt="es6에서의 객체" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
-                            <p class="item-title"><a href="/2017/11/04/es6-04/" class="title">es6에서의 객체</a></p>
-                            <p class="item-date"><time datetime="2017-11-04T14:50:03.000Z" itemprop="datePublished">2017-11-04</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1950,7 +1971,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1959,7 +1980,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-express-설치-미들웨어/">node, express 설치, 미들웨어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1968,7 +1989,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
+            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-express-설치-미들웨어/" style="font-size: 10px;">node, express 설치, 미들웨어</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
         </div>
     </div>
 
