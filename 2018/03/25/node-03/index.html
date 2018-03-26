@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="shin">
 <meta property="og:description" content="defalt뭔지는 잘 모르겠지만 일단 기본으로 셋팅을 해야 되는 부분.이 부분은 필요에 따라 찾아보고 셋팅하면 될듯.12345678910111213141516171819//app.jsvar express = require(&apos;express&apos;);var http = require(&apos;http&apos;);var path = require(&apos;path&apos;);var bodyPar">
 <meta property="og:image" content="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png">
-<meta property="og:updated_time" content="2018-03-26T04:47:21.623Z">
+<meta property="og:updated_time" content="2018-03-26T04:49:54.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="로그인 기능, 로그인 정도 다른 페이지로 넘기기">
 <meta name="twitter:description" content="defalt뭔지는 잘 모르겠지만 일단 기본으로 셋팅을 해야 되는 부분.이 부분은 필요에 따라 찾아보고 셋팅하면 될듯.12345678910111213141516171819//app.jsvar express = require(&apos;express&apos;);var http = require(&apos;http&apos;);var path = require(&apos;path&apos;);var bodyPar">
@@ -283,6 +283,8 @@ ga('send', 'pageview');
 <p>그리고 헷갈려서 여태 보지 않았던 output.html을 봅시다. body안에 정보를 넣어 줍니다. 이때 태그는 <code>&lt;%= %&gt;</code>이런 형식의 태그를 씁니다. </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//output.html</div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Express서버에서 응답한 결과입니다.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">id</span> %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">password</span> %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>app.js에서 user의 id와 password를 키값으로 등록을 했기 때문에 HTML안에서는 간단하게 키값으로만 쓸 수 있습니다. </p>
+<hr>
+<p>이제 node app.js로 노드를 서버를 실행시키고 <code>localhost:3000/login</code>에 들어가 정보를 입력하면 <code>output</code>으로 이동하는 것을 확인할 수 있습니다. </p>
 
         
         </div>
@@ -293,7 +295,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/25/node-03/" data-id="cjf7r3x2o001v98vaxp6imzgq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/25/node-03/" data-id="cjf7r78cd001w8svapev34wql" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
