@@ -275,7 +275,7 @@ ga('send', 'pageview');
 <p>그리고 맨 끝에는 미들웨어에 router객체를 등록하는 태그를 넣어줍니다.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="string">'/'</span>, router);</div><div class="line"><span class="comment">//미들웨어에 router객체를 등록</span></div></pre></td></tr></table></figure></p>
 <h2 id="login-html에서-넘어온-정보를-output-html에-뿌려주기"><a href="#login-html에서-넘어온-정보를-output-html에-뿌려주기" class="headerlink" title="login.html에서 넘어온 정보를 output.html에 뿌려주기"></a>login.html에서 넘어온 정보를 output.html에 뿌려주기</h2><p>생각보다 넘나 간단한 것. 위에서 라우터 등록하는 부분에 user정보를 렌더합니다(?)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//app.js</span></div><div class="line">router.route(<span class="string">'/output'</span>).post(<span class="function">(<span class="params">req, res</span>)=&gt;</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'output 처리함'</span>)</div><div class="line">    <span class="keyword">var</span> user = &#123;<span class="attr">id</span>:req.body.id, <span class="attr">password</span>:req.body.password&#125;</div><div class="line">    res.render(<span class="string">'out.html'</span>, user);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>그리고 헷갈려서 여태 보지 않았던 output.html을 봅시다. body안에 정보를 넣어 줍니다. 이때 태그는 <code>&lt;%= %&gt;</code>이런 형식의 태그를 씁니다. </p>
-<figure class="highlight plain"><figcaption><span>ejs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//output.html</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;Express서버에서 응답한 결과입니다.&lt;/h1&gt;</div><div class="line">    &lt;p&gt;</div><div class="line">        &lt;%= id %&gt;</div><div class="line">    &lt;/p&gt;</div><div class="line">    &lt;p&gt;</div><div class="line">        &lt;%= password %&gt;</div><div class="line">    &lt;/p&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//output.html</div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Express서버에서 응답한 결과입니다.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">id</span> %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%=</span> <span class="attr">password</span> %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>app.js에서 user의 id와 password를 키값으로 등록을 했기 때문에 HTML안에서는 간단하게 키값으로만 쓸 수 있습니다. </p>
 
         
@@ -287,7 +287,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/25/node-03/" data-id="cjf7r23y7001vukvafq1vi8rx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/25/node-03/" data-id="cjf7r3x2o001v98vaxp6imzgq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -468,7 +468,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/18/node-02/" data-id="cjf7r23y7001sukvadpxaqg43" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/18/node-02/" data-id="cjf7r3x2o001s98va35kpovzr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -642,7 +642,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjf7r23y7001pukvae2kt91jj" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjf7r3x2l001p98vaw0winz9g" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -823,7 +823,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjf7r23y7001xukvalrla606f" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjf7r3x2s002198vavw3j14y3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -974,7 +974,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjf7r23y7001cukva1n1p816c" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjf7r3x2f001c98vahr41ierd" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1156,7 +1156,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjf7r23xq000oukva7we3rzdi" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjf7r3x20000o98vax475grjp" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1292,7 +1292,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjf7r23xq000iukva0wniakgx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjf7r3x1w000i98vaic4m3wrc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1438,7 +1438,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjf7r23y7001fukvak3hebtro" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjf7r3x2g001f98vac5f6g6j3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1606,7 +1606,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjf7r23y70019ukvawnnl1v7l" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjf7r3x2d001998vafm076u2z" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1769,7 +1769,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjf7r23y70015ukvav3pkintb" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjf7r3x2b001598vawtq0758c" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
