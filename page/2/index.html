@@ -168,11 +168,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                29
+                30
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                28
+                29
                 <span>태그</span>
             </div>
         </div>
@@ -221,6 +221,169 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-jquery-01-circle" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/19/jquery-01-circle/">jquery로 퍼센트를 표시해보자!</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/19/jquery-01-circle/">
+            <time datetime="2017-10-19T09:32:59.000Z" itemprop="datePublished">2017-10-19</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="발단"><a href="#발단" class="headerlink" title="발단"></a>발단</h3><p>스터디에서 스터디 하시는 분이 소개팅 어플을 개발하고 계신데 거기에서 상대 매칭율을 이쁘고 아름답게 구현하심. 나도 해보고 싶었음. 하지만 쉽지 않았음.</p>
+<hr>
+<h3 id="SVG로-원을-그려보자"><a href="#SVG로-원을-그려보자" class="headerlink" title="SVG로 원을 그려보자"></a>SVG로 원을 그려보자</h3><p>일단 우리에게는 원이 필요하다. svg로 원을 그려보자!</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"cont"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">svg</span> <span class="attr">viewPort</span>=<span class="string">"0 0 320 320"</span> <span class="attr">width</span>=<span class="string">"320"</span> <span class="attr">height</span>=<span class="string">"320"</span> <span class="attr">id</span>=<span class="string">"svg"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">circle</span> <span class="attr">id</span>=<span class="string">"path"</span> <span class="attr">cx</span>=<span class="string">"160"</span> <span class="attr">cy</span>=<span class="string">"160"</span> <span class="attr">r</span>=<span class="string">"100"</span> <span class="attr">stroke</span>=<span class="string">"#000000"</span> <span class="attr">fill</span>=<span class="string">"none"</span> <span class="attr">stroke-width</span>=<span class="string">"10"</span> <span class="attr">stroke-linecap</span>=<span class="string">"round"</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="NaoyoY" data-default-tab="result" data-user="hololloy" data-embed-version="2" data-pen-title="NaoyoY" class="codepen">See the Pen <a href="https://codepen.io/hololloy/pen/NaoyoY/" target="_blank" rel="external">NaoyoY</a> by shin (<a href="https://codepen.io/hololloy" target="_blank" rel="external">@hololloy</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>그럼 이렇게 이쁜 원이 그려지는 것을 볼 수 있다.<br>다음단계에서는 어떻게 원에 애니메이션을 주느냐인데 여기에서 알아야 할 CSS속성이 있다. </p>
+<hr>
+<h3 id="stroke-dasharray-stroke-dashoffset"><a href="#stroke-dasharray-stroke-dashoffset" class="headerlink" title="stroke-dasharray, stroke-dashoffset"></a>stroke-dasharray, stroke-dashoffset</h3><h4 id="stroke-dasharray"><a href="#stroke-dasharray" class="headerlink" title="stroke-dasharray"></a>stroke-dasharray</h4><p>dasharray는 점의 길이와 간격 속성을 부여한다. dasharray에 대한 설명은 <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray" target="_blank" rel="external">여기</a>에서 자세히 볼 수 있다.  </p>
+<h4 id="stroke-dashoffset"><a href="#stroke-dashoffset" class="headerlink" title="stroke-dashoffset"></a>stroke-dashoffset</h4><blockquote>
+<p>specifies the distance into the dash pattern to start the dash</p>
+</blockquote>
+<p>즉, 대시를 시작하기 위해 대시 패턴으로의 거리를 지정하는 것. 모르겠다 이건…어디 블로그에서는 점으로 만들어주는 속성이라고 하는데….얼렁뚱땅 다음 단계로 넘어가보자!</p>
+<hr>
+<h3 id="본격적인-애니메이션-작업"><a href="#본격적인-애니메이션-작업" class="headerlink" title="본격적인 애니메이션 작업"></a>본격적인 애니메이션 작업</h3><p>stroke-dasharray와 stroke-dashoffset을 설정하기 위해서는 일단 원의 둘레 길이를 알아야한다. 우리는 위에서 r(반지름)이 100인 원을 그렸는데 이 원의 둘레는 빠밤</p>
+<blockquote>
+<p>2&pi;r =  628.3185307179587</p>
+</blockquote>
+<p>이렇게 나오는데 이 속성값을 클래스 cir에 넣어줘야 한다.<br>(자바스크립트에서 &pi;는 Math.PI로 계산 할 수 있다.) </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#svg</span> <span class="selector-class">.cir</span>&#123;</div><div class="line">  <span class="attribute">stroke-dasharray</span>: <span class="number">628.3185307179587</span>;</div><div class="line">  <span class="attribute">stroke-dashoffset</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>이렇게 하면 아무 변화가 없는데 여기에 애니메이션을 넣는다.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">stroke-dashoffset</span>: 628<span class="selector-class">.3185307179587</span>;</div><div class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">stroke-dashoffset</span> 1<span class="selector-tag">s</span> <span class="selector-tag">linear</span>;</div></pre></td></tr></table></figure></p>
+<p>그러면 원이 세시 방향에서부터 사라지는 것을 볼 수 있다.<br>이건 svg circle의 특성으로 작업을 용이하게 하기 위해서 시계 반대방향으로 90도 돌려주자.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#svg</span> &#123;</div><div class="line">   <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>이렇게 하면 offset수치 변화에 따른 애니메이션을 본 것이다. 포스팅을 하면서 알게된 것은 변화가 있을 때에만 애니메이션을 볼 수 있다는 것(당연한 것을…)<br>자, 이제 우리의 시작점은 12시에 숨어있을 것이다. 데이터를 변수 val에 입력하여 그것이 애니메이션으로 나타나게 작업을 진행해보자.</p>
+<p>작업의 순서는 다음과 같다<br><code>특정 값 지정-&gt;값에 따른 호의 길이 계산-&gt; css에 입력</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> val = <span class="number">50</span>;   <span class="comment">//특정 값 입력(퍼센트 계산이기 때문에 0~100 사이의 값 입력)</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> $circle = $(<span class="string">'#svg .cir'</span>);   </div><div class="line">    <span class="keyword">var</span> r = $circle.attr(<span class="string">'r'</span>);   <span class="comment">//</span></div><div class="line">    <span class="keyword">var</span> per = ((<span class="number">100</span> - val) / <span class="number">100</span>) * <span class="built_in">Math</span>.PI *r * <span class="number">2</span>; <span class="comment">//호의 길이 계산</span></div><div class="line"></div><div class="line">    $circle.css(</div><div class="line">        strokeDashoffset: per</div><div class="line">    ); <span class="comment">//css에 offset 수치 입력</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>이렇게 하면 다음과 같은 결과가 나온다. </p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="QqYmjZ" data-default-tab="html,result" data-user="hololloy" data-embed-version="2" data-pen-title="QqYmjZ" class="codepen">See the Pen <a href="https://codepen.io/hololloy/pen/QqYmjZ/" target="_blank" rel="external">QqYmjZ</a> by shin (<a href="https://codepen.io/hololloy" target="_blank" rel="external">@hololloy</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><code>$(document).ready(function(){});</code>이 함수로 한번 더 감싸주지 않아서 자꾸 오류가 생겼는데 여기에 넣으니 해결. 오늘은 여기까지 그럼 안녕~</p>
+<p><img src="http://mblogthumb4.phinf.naver.net/MjAxNzAzMjNfMTM1/MDAxNDkwMjM1Njg0NDI2.k7Vwfr94sADdz5ivvZiJUCIYOHytqWN1vBC259N6FYsg.Zxo82NHqBPthtkLopsf4re0XnJNTKAWUcp0XVQ2EY50g.PNG.gwanggeun/%EC%9D%B8%EC%82%AC_%EC%95%88%EB%85%95.png?type=w2" alt="안녕~ 이제 힘들어~"></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/" data-id="cjf7rccgn00150svag03zdu9e" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2017/10/19/jquery-01-circle/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/10/19/jquery-01-circle/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-etc-02" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -284,7 +447,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cjf7r78bp000w8svahjc4goow" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/10/10/etc-02/" data-id="cjf7rccgh000w0svahbmgsrti" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -444,7 +607,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cjf7r78br00108svaa17fqabr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/16/ex6-04/" data-id="cjf7rccgk00100svagn5dccox" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -586,7 +749,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cjf7r78b9000c8svasdlk2pxy" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/06/es6-03/" data-id="cjf7rccg7000f0sva5p88q3co" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -733,7 +896,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cjf7r78av00018sva77ypoxla" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/04/JS-Compare-Numbers/" data-id="cjf7rccfq00010svaib6dpm60" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -883,7 +1046,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/01/js-pattern-01/" data-id="cjf7r78c3001i8svazmdxi4kk" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/01/js-pattern-01/" data-id="cjf7rccgv001i0sva34ms081e" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1031,7 +1194,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/09/01/es6-02/" data-id="cjf7r78bc000f8svaxfutd9wl" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/09/01/es6-02/" data-id="cjf7rccg0000a0svatj4bh1y2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1177,7 +1340,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/21/es6-01/" data-id="cjf7r78b7000a8svaj4vmrotg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/21/es6-01/" data-id="cjf7rccg3000c0svasmdai717" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1325,7 +1488,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/19/es6-start/" data-id="cjf7r78bi000m8svawguc3twg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/19/es6-start/" data-id="cjf7rccgd000p0svatz6rdtrg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1477,7 +1640,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/08/11/wix/" data-id="cjf7r78cg00208svayv67krns" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/08/11/wix/" data-id="cjf7rcch900220svai35dezab" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1555,145 +1718,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-etc-01" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/10/etc-01/">잡담 01</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/10/etc-01/">
-            <time datetime="2017-08-10T11:15:52.000Z" itemprop="datePublished">2017-08-10</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/etc/">etc</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/디자이너-현타/">디자이너, 현타</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h4 id="주절주절…"><a href="#주절주절…" class="headerlink" title="주절주절…"></a>주절주절…</h4><p>디자인 하면서 HTML, CSS를 다룰 수 있는 사람들은 얼마나 많은가….<br>에이전시에 있으면서 그 안에 있던 디자이너들은 모두 퍼블리싱 정도는 할 수 있었다. 별로 특별하게 생각하지 않는다. </p>
-<p>그러다보니 <code>jquery</code>도 사용하게 되고 쓰는데 어려움을 느껴 <code>javascript</code>까지 배우게 된다. 스터디 자료를 준비하면서 <code>lodash</code>를 처음 접하면서 cto께 배움을 청하였다. 친절하게 알려주시면서 조언을 해주셨다. </p>
-<blockquote>
-<p>자바스크립트를 너무 깊이 안하셔도 될거 같다고… 필요하다면 lodash같이 편리하게 사용할 수 있는 것들이 있으니 그런것을 활용하고, 거기에 없는 것만 짜보시는 것이 어떻느냐. 복잡하지 않고 단순한 것부터. 그리고 jquery를 같이 쓰면서 눈에 보이면 더 재밌게 하실 수 있으실 거라고. </p>
-</blockquote>
-<p>얘기를 듣고보니 내가 먼길을 돌아온건 아닐까 하는 생각이 든다. 다시 jquery를 살펴보게 되었다. </p>
-<p>디자이너의 타이틀을 버리지는 않을 것이다. 그렇게 나는 어디까지 갈 수 있을까. 나는 어디까지 할 수 있을까. 어디로 가야하나….</p>
-<p>다시 초심으로 돌아가서 이것 저것 일단 만들어봐야겠다.</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/08/10/etc-01/" data-id="cjf7r78bm000t8svau8ehuin5" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/08/10/etc-01/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/08/10/etc-01/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/">&laquo; 이전</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">다음 &raquo;</a>
     </nav>
@@ -1707,6 +1731,25 @@ ga('send', 'pageview');
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/26/node-04/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://firebase.google.com/_static/images/firebase/touchicon-180.png)" alt="Firebase 노드에 연결하기" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/03/26/node-04/" class="title">Firebase 노드에 연결하기</a></p>
+                            <p class="item-date"><time datetime="2018-03-26T04:52:26.000Z" itemprop="datePublished">2018-03-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1784,25 +1827,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/12/03/js-function/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://shaunlebron.github.io/solar-system-of-js/js.svg)" alt="js 함수" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
-                            <p class="item-title"><a href="/2017/12/03/js-function/" class="title">js 함수</a></p>
-                            <p class="item-date"><time datetime="2017-12-02T20:35:22.000Z" itemprop="datePublished">2017-12-03</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1821,7 +1845,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1830,7 +1854,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-ejs/">node, ejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-express-설치-미들웨어/">node, express 설치, 미들웨어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-ejs/">node, ejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-express-설치-미들웨어/">node, express 설치, 미들웨어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-firebase/">node, firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1839,7 +1863,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-ejs/" style="font-size: 10px;">node, ejs</a> <a href="/tags/node-express-설치-미들웨어/" style="font-size: 10px;">node, express 설치, 미들웨어</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
+            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-ejs/" style="font-size: 10px;">node, ejs</a> <a href="/tags/node-express-설치-미들웨어/" style="font-size: 10px;">node, express 설치, 미들웨어</a> <a href="/tags/node-firebase/" style="font-size: 10px;">node, firebase</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
         </div>
     </div>
 
