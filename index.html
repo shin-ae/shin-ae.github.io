@@ -168,11 +168,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                30
+                31
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                29
+                30
                 <span>태그</span>
             </div>
         </div>
@@ -221,6 +221,162 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-node-05" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/04/07/node-05/">node에 vue프레임워크 연결하기</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/07/node-05/">
+            <time datetime="2018-04-07T06:36:46.000Z" itemprop="datePublished">2018-04-07</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/node-vue/">node, vue</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><del>으아 진짜 엉망진창으로 정리하고 있다는 느낌이 든다.</del></p>
+<h2 id="vue연결하기"><a href="#vue연결하기" class="headerlink" title="vue연결하기"></a>vue연결하기</h2><blockquote>
+<p>Vue(/vjuː/ 로 발음, view 와 발음이 같습니다.)는 사용자 인터페이스를 만들기 위한 진보적인 프레임워크 입니다. </p>
+</blockquote>
+<p>라고 Vue에서 설명하고 있습니다. Vue홈페이지는 한글화가 잘 되어 있어서 영어에 거부감이 있으신 분들도 쉽게 접근 가능하실 겁니다. </p>
+<p>그럼 저번에 firebase에 연결해 놓았던 node프로젝트를 꺼내 봅니다. 여기에 Vue를 설치해 보도록 하겠습니다. </p>
+<p><a href="https://kr.vuejs.org/v2/guide/installation.html" target="_blank" rel="external">vue설치하기 바로가기</a></p>
+<p>링크에 들어가보시면 설치하기 방법이 여러가지 나와있습니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue --s</div></pre></td></tr></table></figure></p>
+<p>npm으로 설치하고 cli로 프로젝트를 만들어줍니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//vue-cli 설치</div><div class="line">npm install --global vue-cli</div><div class="line">//&quot;webpack&quot; 템플릿을 이용해서 새 프로젝트 생성</div><div class="line">vue init webpack my-project</div><div class="line">//의존성을 설치하고 실행하세요!</div><div class="line">cd my-project</div><div class="line">npm install</div><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
+<p>이렇게하면 다음과 같은 문서 구조가 될겁니다. <code>front</code>문서 생겼쪙</p>
+<p><img src="/css/images/vue-01.png" alt="문서구조"></p>
+<p>front를 클릭하면 </p>
+<p><img src="/css/images/vue-02.png" alt="문서구조"></p>
+<p>이렇게 보여집니다. 여기에서 주로 쓰게 될 폴더는 <code>src &gt; components</code> 파일입니다. </p>
+<p>만들었으니 일단 실행해보겠습니다.<br>명령 프롬프트에<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
+<p>을 입력해줍니다. 그럼 <code>http://localhost:8080</code> 이 주소로 접속이 가능하게됩니다. Vue의 로컬 호스트는 보통8080으로 정해집니다. Hexo는 4000…</p>
+<p>주소로 들어가면 이런 화면을 볼 수 있습니다. </p>
+<p><img src="/css/images/vue-03.jpg" alt="vue설치"></p>
+<p>그럼 설치가 다 된 것 같으니 테스트를 하나 해봅시다. </p>
+<h2 id="two-way-binding"><a href="#two-way-binding" class="headerlink" title="two way binding"></a>two way binding</h2><blockquote>
+<p>v-model 디렉티브를 사용하여 폼 input과 textarea 엘리먼트에 양방향 데이터 바인딩을 생성할 수 있습니다. </p>
+</blockquote>
+<p><code>components</code> 폴더에 새로운 폴더를 만듭니다. 저는 <code>second</code>파일을 만들었습니다.</p>
+<p>거기에 각각 <code>second.css</code>, <code>second.html</code>, <code>second.vue</code>파일 쪼개주기.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123;password&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span> = <span class="string">"password"</span> <span class="attr">type</span> = <span class="string">"text"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;template src = <span class="string">"./second.html"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></div><div class="line">&lt;style scoped src = <span class="string">"./second.css"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Second'</span>,</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">'This is Second page'</span>,</div><div class="line">      <span class="attr">password</span>: <span class="string">"chicken"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p>사실 이 파일은 <code>HelloWorld.vue</code> 예시 파일을 쪼개 놓은 것입니다. 앵귤러에서는 이렇게 파일을 쪼갠다고 하더라구요. 이렇게 파일을 쪼개 주고 <code>routes</code> 설정을 바꿔줘야 합니다.</p>
+<p>라우터 설정은 <code>src &gt; router &gt; index.js</code>에 가시면 바꿀 수 있습니다. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</div><div class="line">  <span class="attr">routes</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">path</span>: <span class="string">'/'</span>,</div><div class="line">      <span class="attr">name</span>: <span class="string">'HelloWorld'</span>,</div><div class="line">      <span class="attr">component</span>: HelloWorld</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// second route추가</span></div><div class="line">    &#123;</div><div class="line">      <span class="attr">path</span>: <span class="string">'/second'</span>,</div><div class="line">      <span class="attr">name</span>: <span class="string">'second'</span>,</div><div class="line">      <span class="attr">component</span>: second</div><div class="line">    &#125;,</div><div class="line">  ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>이렇게 변경을 하고 <code>http://localhost:8080/#/second</code> 여기에 들어가 폼에 아무거나 입력하시면 위에 그 내용을 보실 수 있으실 겁니다. 실시간(?)으로 바뀌는 것을 양방향 바인딩이라고 하나? ㅎㅎㅎ</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://shin-ae.github.io/2018/04/07/node-05/" data-id="cjfp1a5m80021b0vapmr0dtb7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://shin-ae.github.io/2018/04/07/node-05/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2018/04/07/node-05/">댓글</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-node-04" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -286,7 +442,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/26/node-04/" data-id="cjf7rcch800200svam5di62bj" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/26/node-04/" data-id="cjfp1a5m6001xb0vaul2i73tg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -432,7 +588,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/25/node-03/" data-id="cjf7rcch4001u0svarfiyw0jz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/25/node-03/" data-id="cjfp1a5m3001vb0va2nep2p43" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -613,7 +769,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/18/node-02/" data-id="cjf7rcch0001o0svavyjp2dp7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/18/node-02/" data-id="cjfp1a5m0001sb0va1wyayj9c" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -787,7 +943,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjf7rcch2001r0svag2ni1nb3" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/03/11/node-01/" data-id="cjfp1a5lx001pb0va6lvuyqgt" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -968,7 +1124,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjf7rcch6001w0svaru5d38k8" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/20/vega-lite-01/" data-id="cjfp1a5mb0026b0va5nlg8eay" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1119,7 +1275,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjf7rccgr001c0svadwaxw15y" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/12/03/js-function/" data-id="cjfp1a5ln001db0va8qtq1hov" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1301,7 +1457,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjf7rccgb000m0sva3qcc75dc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/18/es6-05/" data-id="cjfp1a5kz000mb0va2xsturr2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1437,7 +1593,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjf7rccg9000i0svawn1jughp" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/04/es6-04/" data-id="cjfp1a5kx000ib0va1d25j14t" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1583,7 +1739,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjf7rccgt001f0svarhpvdera" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2017/11/03/js-obj/" data-id="cjfp1a5lp001gb0vae51z2jar" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1661,176 +1817,8 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
 
 
 
-    <article id="post-js-array" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/10/21/js-array/">자바스크립트 array</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/10/21/js-array/">
-            <time datetime="2017-10-21T05:14:29.000Z" itemprop="datePublished">2017-10-21</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JS/">JS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="배열의-기초"><a href="#배열의-기초" class="headerlink" title="배열의 기초"></a>배열의 기초</h3><ul>
-<li>배열은 객체와 달리 순서가 있는 집합, 0으로 시작하는 숫자형 인덱스 사용</li>
-<li>한 배열의 요소가 모두 같은 타입일 필요는 없음</li>
-<li>배열 리터럴은 대괄호로 만들고 배열요소에 인덱스로 접근할 때도 대괄호를 사용</li>
-<li>배열에 요소가 몇개 있는지 나타내는 length프로퍼티가 있음</li>
-<li>배열 길이보다 큰 인덱스를 사용하여 요소를 할당하면 배열은 자동적으로 인덱스에 맞게 늘어남. 빈자리는 <code>undefined</code>로 채워짐</li>
-<li><del>array생성자로 배열을 만들 수 있지만 그렇게 해야하는 경우는 별로 없음</del></li>
-</ul>
-<hr>
-<h4 id="배열-처음이나-끝에서-요소-하나를-추가하거나-빼기"><a href="#배열-처음이나-끝에서-요소-하나를-추가하거나-빼기" class="headerlink" title="배열 처음이나 끝에서 요소 하나를 추가하거나 빼기"></a>배열 처음이나 끝에서 요소 하나를 추가하거나 빼기</h4><p><strong>push, pop, unshift, shift</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>];</div><div class="line"><span class="literal">undefined</span></div><div class="line">arr.push(<span class="string">"e"</span>);  <span class="comment">// (4) ["b", "c", "d", "e"]</span></div><div class="line">arr.pop();  <span class="comment">//"e", (3) ["b", "c", "d"]</span></div><div class="line">arr. unshift(<span class="string">"a"</span>);  <span class="comment">//(4) ["a", "b", "c", "d"]</span></div><div class="line">arr.shift();    <span class="comment">//"a", (3) ["b", "c", "d"]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="배열-끝에-여러-요소-추가하기"><a href="#배열-끝에-여러-요소-추가하기" class="headerlink" title="배열 끝에 여러 요소 추가하기"></a>배열 끝에 여러 요소 추가하기</h4><p><strong>concat</strong><br>concat메서드는 배열 끝에 료소를 추가한 사본을 반환<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.concat(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);    <span class="comment">//(6) [1, 2, 3, 4, 5, 6]</span></div><div class="line"><span class="comment">//arr는 바뀌지 않음</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="배열-일부-가져오기"><a href="#배열-일부-가져오기" class="headerlink" title="배열 일부 가져오기"></a>배열 일부 가져오기</h4><p><strong>slice</strong><br>slice는 두개의 매개변수를 받는다. 첫번째 매개변수는 어디서부터 가져올지, 두번째는 어디까지 가져올지. 매개 변수로 음수 인덱스를 쓸 수 있고 음수 인덱스를 쓰면 배열의 끝에서 부터 요소를 센다.<br><code>arr는 바뀌지 않는다</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]; </div><div class="line">arr.slice(<span class="number">3</span>);   <span class="comment">//[4, 5]</span></div><div class="line">arr.slice(<span class="number">2</span>,<span class="number">4</span>); <span class="comment">//[3, 4]</span></div><div class="line">arr.slice(<span class="number">-2</span>);  <span class="comment">//[4, 5]</span></div><div class="line">arr.slice(<span class="number">1</span>, <span class="number">-2</span>);   <span class="comment">//[2, 3]</span></div><div class="line">arr.slice(<span class="number">-2</span>,<span class="number">-1</span>);   <span class="comment">//[4]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="임의의-위치에-요소-추가하거나-제거하기"><a href="#임의의-위치에-요소-추가하거나-제거하기" class="headerlink" title="임의의 위치에 요소 추가하거나 제거하기"></a>임의의 위치에 요소 추가하거나 제거하기</h4><p><strong>splice</strong><br>첫번쨰 매개변수는 수정을 시작할 인덱스, 두번쩨 인덱스는 제어할 요소 갯수. 나머지 매개변수는 배열에 추가될 요소.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>];</div><div class="line">arr.splice(<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  <span class="comment">//[], (6) [1, 2, 3, 4, 5, 7]</span></div><div class="line">arr.splice(<span class="number">5</span>,<span class="number">0</span>,<span class="number">6</span>);  <span class="comment">//[], (7) [1, 2, 3, 4, 5, 6, 7]</span></div><div class="line">arr.splice(<span class="number">1</span>,<span class="number">2</span>);    <span class="comment">//[2,3], (5) [1, 4, 5, 6, 7]</span></div><div class="line">arr.splice(<span class="number">2</span>,<span class="number">1</span>,<span class="string">'a'</span>,<span class="string">'b'</span>);    <span class="comment">//[5], (6) [1, 4, "a", "b", 6, 7]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="배열-안에서-요소-교체하기"><a href="#배열-안에서-요소-교체하기" class="headerlink" title="배열 안에서 요소 교체하기"></a>배열 안에서 요소 교체하기</h4><p><strong>copyWithin</strong><br>배열 요소를 복사해서 다른 위치에 붙여두고, 기존의 요소를 덮어씀<br>첫번째 매개변수는 복사한 요소를 붙여넣을 위치, 두번째 매개변수는 복사를 시작할 위치, 세번째는 복사를 끝낼 위치. 음수 인덱스를 사용하면 배열의 끝에서부터 셈<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line"><span class="literal">undefined</span></div><div class="line">arr.copyWithin(<span class="number">1</span>,<span class="number">2</span>);    <span class="comment">//(4) [1, 3, 4, 4]</span></div><div class="line">arr.copyWithin(<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>);  <span class="comment">//(4) [1, 3, 1, 3]</span></div><div class="line">arr.copyWithin(<span class="number">0</span>,<span class="number">-3</span>,<span class="number">-1</span>);    <span class="comment">//(4) [3, 1, 1, 3]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="특정-값으로-배열-채우기"><a href="#특정-값으로-배열-채우기" class="headerlink" title="특정 값으로 배열 채우기"></a>특정 값으로 배열 채우기</h4><p><strong>fill</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>).fill(<span class="number">1</span>);   <span class="comment">//(5) [1, 1, 1, 1, 1]</span></div><div class="line">arr.fill(<span class="string">"a"</span>);  <span class="comment">//(5) ["a", "a", "a", "a", "a"]</span></div><div class="line">arr.fill(<span class="string">"b"</span>, <span class="number">1</span>);   <span class="comment">//(5) ["a", "b", "b", "b", "b"]</span></div><div class="line">arr.fill(<span class="string">"c"</span>, <span class="number">2</span>,<span class="number">4</span>); <span class="comment">//(5) ["a", "b", "c", "c", "b"]</span></div><div class="line">arr.fill(<span class="number">5</span>,<span class="number">5</span>,<span class="number">-4</span>);   <span class="comment">//(5) ["a", "b", "c", "c", "b"]</span></div><div class="line">arr.fill(<span class="number">5.5</span>,<span class="number">-4</span>);   <span class="comment">//(5) ["a", 5.5, 5.5, 5.5, 5.5]</span></div><div class="line">arr.fill(<span class="number">0</span>,<span class="number">-3</span>,<span class="number">-1</span>);  <span class="comment">//(5) ["a", 5.5, 0, 0, 5.5]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="배열-정렬과-역순-정렬"><a href="#배열-정렬과-역순-정렬" class="headerlink" title="배열 정렬과 역순 정렬"></a>배열 정렬과 역순 정렬</h4><p><strong>reverce, sort</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.reverse();  <span class="comment">//(5) [5, 4, 3, 2, 1]</span></div><div class="line">arr.sort(); <span class="comment">//(5) [1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure></p>
-<p><em>sort</em>는 정렬 함수를 받을 수 있음. 일반적으로는 객체가 들어있는 배열을 정렬할 수 없지만 정렬함수를 사용하면 가능.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [&#123;<span class="attr">name</span>:<span class="string">"shin"</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">"hollo"</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">"ha"</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">"ahmad"</span>&#125;];</div><div class="line">arr.sort(); <span class="comment">//arr에 변화 없음</span></div><div class="line">arr.sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span> a.name &gt; b.name);</div><div class="line"><span class="comment">//&#123;name: "ahmad"&#125;,&#123;name: "ha"&#125;,&#123;name: "hollo"&#125;,&#123;name: "shin"&#125;</span></div><div class="line"><span class="comment">//name프로퍼티의 알파벳 순으로 정렬</span></div><div class="line">arr.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a.name[<span class="number">1</span>] &lt; b.name[<span class="number">1</span>]);</div><div class="line"><span class="comment">// &#123;name: "hollo"&#125;,&#123;name: "ahmad"&#125;,&#123;name: "shin"&#125;,&#123;name: "ha"&#125;</span></div><div class="line"><span class="comment">//name 프로퍼티 두번째 글자의 알파벳 역순으로 정렬</span></div></pre></td></tr></table></figure>
-<hr>
-<h4 id="배열검색"><a href="#배열검색" class="headerlink" title="배열검색"></a>배열검색</h4><p><strong>indexOf, lastIndexOf</strong><br>찾고자 하는 것과 정확히 일치(===)하는 첫번째 요소의 인덱스를 반환.<br>lastIndexOf는 배열의 끝에서 부터 검색.<br>일치하는 것을 찾지 못하면 -1을 반환한다.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> o = &#123;<span class="attr">name</span>:<span class="string">"Jerry"</span>&#125;;</div><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">5</span>,<span class="string">"a"</span>,o,<span class="literal">true</span>,<span class="number">5</span>,[<span class="number">1</span>,<span class="number">2</span>],<span class="string">"9"</span>];</div><div class="line">arr.indexOf(<span class="number">5</span>); <span class="comment">//1</span></div><div class="line">arr.lastIndexOf(<span class="number">5</span>); <span class="comment">//5</span></div><div class="line">arr.indexOf(&#123;<span class="attr">name</span>:<span class="string">"Jerry"</span>&#125;);    <span class="comment">//-1</span></div></pre></td></tr></table></figure></p>
-<p><strong>findIndex</strong><br>indexOf와 비슷하지만 보조함수를 써서 검색조건을 지정할 수 있음<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr=[&#123;<span class="attr">id</span>:<span class="number">5</span>, <span class="attr">name</span>:<span class="string">"shin"</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">7</span>, <span class="attr">name</span>:<span class="string">"hollol"</span>&#125;];</div><div class="line"><span class="literal">undefined</span></div><div class="line">arr.findIndex(<span class="function"><span class="params">o</span> =&gt;</span> o.id ===<span class="number">5</span>);  <span class="comment">//0</span></div><div class="line">arr.findIndex(<span class="function"><span class="params">o</span>=&gt;</span>o.name===<span class="string">"hollol"</span>);    <span class="comment">//1</span></div></pre></td></tr></table></figure></p>
-<p><strong>find</strong><br>조건에 맞는 요소의 인덱스가 아니라 요소 자체를 원할 때는 find를 사용<br><code>findIndex</code>와 마찬가지로 검색 조건을 함수로 전달할 수 있음<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr=[&#123;<span class="attr">id</span>:<span class="number">5</span>, <span class="attr">name</span>:<span class="string">"shin"</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">7</span>, <span class="attr">name</span>:<span class="string">"hollol"</span>&#125;];</div><div class="line">arr.find(<span class="function"><span class="params">o</span> =&gt;</span> o.id ===<span class="number">5</span>);   <span class="comment">//&#123;id: 5, name: "shin"&#125;</span></div></pre></td></tr></table></figure></p>
-<p><strong>some, every</strong><br>some은 조건에 맞는 요소를 찾으면 즉시 true반환 찾지 못하면 false반환<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr=[<span class="number">5</span>,<span class="number">7</span>,<span class="number">12</span>,<span class="number">15</span>,<span class="number">17</span>];</div><div class="line">arr.some(<span class="function"><span class="params">x</span>=&gt;</span> x%<span class="number">2</span> === <span class="number">0</span>);    <span class="comment">//true, 12가 짝수이기 때문</span></div><div class="line">arr.every(<span class="function"><span class="params">x</span>=&gt;</span> x%<span class="number">2</span> === <span class="number">0</span>);   <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h4 id="map-filter"><a href="#map-filter" class="headerlink" title="map, filter"></a>map, filter</h4><p><strong>map</strong><br>map은 배열 요소를 변형<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> cart = [&#123;<span class="attr">name</span>:<span class="string">"book"</span>, <span class="attr">price</span>:<span class="number">123.5</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">"tea"</span>, <span class="attr">price</span>:<span class="number">56.7</span>&#125;];</div><div class="line"><span class="keyword">const</span> names = cart.map(<span class="function"><span class="params">x</span>=&gt;</span>x.name);  <span class="comment">//(2) ["book", "tea"]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> items = [<span class="string">"candy"</span>,<span class="string">"choco"</span>];</div><div class="line"><span class="keyword">const</span> price = [<span class="number">2.25</span>, <span class="number">7.3</span>];</div><div class="line"><span class="keyword">const</span> list = items.map(<span class="function">(<span class="params">x, i</span>) =&gt;</span> (&#123;<span class="attr">name</span>: x, <span class="attr">price</span>:price[i]&#125;));</div><div class="line"><span class="comment">//list : [&#123;name: "candy", price: 2.25&#125;,&#123;name: "choco", price: 7.3&#125;]</span></div></pre></td></tr></table></figure></p>
-<p><strong>filter</strong><br>배열에서 필요한 것들만 남김</p>
-<hr>
-<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p><code>map</code>이 배열 각 요소를 변형한다면 reduce는 배열 자체를 변형. reduce라는 이름은 이 메서드가 보통 배열을 값 하나로 줄이는데 쓰이기 때문에 붙여짐. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>];</div><div class="line"><span class="keyword">const</span> sum = arr.reduce(<span class="function">(<span class="params">a,x</span>) =&gt;</span> a += x, <span class="number">0</span>); <span class="comment">//18</span></div><div class="line"><span class="comment">//0은 초기값, a의 초기값은 0이 된다.</span></div></pre></td></tr></table></figure>
-<hr>
-<h4 id="문자열-병합"><a href="#문자열-병합" class="headerlink" title="문자열 병합"></a>문자열 병합</h4><p><strong>join</strong><br>매개변수가 생략 될 때는 기본값 쉼표(,)<br>문자열 요소를 합칠 때 정의되지 않은 요소, 삭제된 요소, null, undefined는 모두 빈 문자열로 취급<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="literal">null</span>, <span class="string">"hello"</span>, <span class="string">"world"</span>, <span class="literal">true</span>, <span class="literal">undefined</span>];</div><div class="line"><span class="keyword">delete</span> arr[<span class="number">3</span>];</div><div class="line">arr.join(); <span class="comment">//"1,,hello,,true,"</span></div><div class="line">arr.join(<span class="string">"-"</span>);  <span class="comment">//"1--hello--true-"</span></div><div class="line"><span class="keyword">const</span> html = <span class="string">'&lt;ul&gt;&lt;li&gt;'</span> + arr.join(<span class="string">'&lt;/li&gt;&lt;li&gt;'</span>)+<span class="string">'&lt;/li&gt;&lt;ul&gt;'</span>;</div><div class="line"><span class="comment">// html : "&lt;ul&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;hello&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;true&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;ul&gt;"</span></div></pre></td></tr></table></figure></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://shin-ae.github.io/2017/10/21/js-array/" data-id="cjf7rccgq001a0sva8qjytgsd" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://shin-ae.github.io/2017/10/21/js-array/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://shin-ae.github.io/2017/10/21/js-array/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">다음 &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">다음 &raquo;</a>
     </nav>
 </section>
             
@@ -1842,6 +1830,25 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/07/node-05/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://kr.vuejs.org/images/logo.png)" alt="node에 vue프레임워크 연결하기" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/04/07/node-05/" class="title">node에 vue프레임워크 연결하기</a></p>
+                            <p class="item-date"><time datetime="2018-04-07T06:36:46.000Z" itemprop="datePublished">2018-04-07</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1919,25 +1926,6 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/12/20/vega-lite-01/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/css/images/vega-lite.jpg)" alt="vega-lite로 그래프를 그려보자." class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/html/">html</a></p>
-                            <p class="item-title"><a href="/2017/12/20/vega-lite-01/" class="title">vega-lite로 그래프를 그려보자.</a></p>
-                            <p class="item-date"><time datetime="2017-12-20T13:08:16.000Z" itemprop="datePublished">2017-12-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1956,7 +1944,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">4월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1965,7 +1953,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-ejs/">node, ejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-express-설치-미들웨어/">node, express 설치, 미들웨어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-firebase/">node, firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-Math-min-Math-max-array/">es6, Math.min, Math.max, array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-for-in-for-of/">es6, for-in, for-of</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-function-매개변수/">es6, function, 매개변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-let-const-var/">es6, let, const, var</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-map-set/">es6, map, set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-클래스-인스턴스/">es6, 클래스, 인스턴스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-해체할당-destructuring-assignment/">es6, 해체할당, destructuring-assignment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그-만들기-글쓰기/">hexo, 블로그 만들기, 글쓰기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-블로그만들기/">hexo, 블로그만들기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-안나와-이미지/">hexo, 안나와, 이미지</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-c3-graph-boolio/">html, c3, graph, boolio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-markdown/">html, markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery-svg-circle-animation/">jQuery, svg, circle, animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-array-배열/">javascript, array, 배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-compare-numbers/">javascript, compare, numbers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-function-함수/">javascript, function, 함수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript-object/">javascript, object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-pattern/">js, pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-ejs/">node, ejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-express-설치-미들웨어/">node, express 설치, 미들웨어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-firebase/">node, firebase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-vue/">node, vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vega-lite-graph-javascript-chart-library/">vega-lite, graph, javascript-chart-library</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wix-간편하게-홈페이지-만들기-불리오/">wix, 간편하게 홈페이지 만들기, 불리오</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-단위/">zeplin, 제플린, 단위</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-숫자-1x-2x/">zeplin, 제플린, 숫자, 1x, 2x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zeplin-제플린-오류-대지-PsCC/">zeplin, 제플린, 오류, 대지, PsCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/디자이너-현타/">디자이너, 현타</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1974,7 +1962,7 @@ data.port = 3000;</code> 이렇게 들어가 있는 형태라고 생각하면 �
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-ejs/" style="font-size: 10px;">node, ejs</a> <a href="/tags/node-express-설치-미들웨어/" style="font-size: 10px;">node, express 설치, 미들웨어</a> <a href="/tags/node-firebase/" style="font-size: 10px;">node, firebase</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
+            <a href="/tags/es6-Math-min-Math-max-array/" style="font-size: 10px;">es6, Math.min, Math.max, array</a> <a href="/tags/es6-for-in-for-of/" style="font-size: 10px;">es6, for-in, for-of</a> <a href="/tags/es6-function-매개변수/" style="font-size: 10px;">es6, function, 매개변수</a> <a href="/tags/es6-let-const-var/" style="font-size: 10px;">es6, let, const, var</a> <a href="/tags/es6-map-set/" style="font-size: 10px;">es6, map, set</a> <a href="/tags/es6-클래스-인스턴스/" style="font-size: 10px;">es6, 클래스, 인스턴스</a> <a href="/tags/es6-해체할당-destructuring-assignment/" style="font-size: 10px;">es6, 해체할당, destructuring-assignment</a> <a href="/tags/hexo-블로그-만들기-글쓰기/" style="font-size: 10px;">hexo, 블로그 만들기, 글쓰기</a> <a href="/tags/hexo-블로그만들기/" style="font-size: 10px;">hexo, 블로그만들기</a> <a href="/tags/hexo-안나와-이미지/" style="font-size: 10px;">hexo, 안나와, 이미지</a> <a href="/tags/html-c3-graph-boolio/" style="font-size: 20px;">html, c3, graph, boolio</a> <a href="/tags/html-markdown/" style="font-size: 10px;">html, markdown</a> <a href="/tags/jQuery-svg-circle-animation/" style="font-size: 10px;">jQuery, svg, circle, animation</a> <a href="/tags/javascript-array-배열/" style="font-size: 10px;">javascript, array, 배열</a> <a href="/tags/javascript-compare-numbers/" style="font-size: 10px;">javascript, compare, numbers</a> <a href="/tags/javascript-function-함수/" style="font-size: 10px;">javascript, function, 함수</a> <a href="/tags/javascript-object/" style="font-size: 10px;">javascript, object</a> <a href="/tags/js-pattern/" style="font-size: 10px;">js, pattern</a> <a href="/tags/lenovo-ideapad-510s-ram-레노버-아이디어패드-램교체/" style="font-size: 10px;">lenovo-ideapad-510s, ram, 레노버-아이디어패드, 램교체</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-ejs/" style="font-size: 10px;">node, ejs</a> <a href="/tags/node-express-설치-미들웨어/" style="font-size: 10px;">node, express 설치, 미들웨어</a> <a href="/tags/node-firebase/" style="font-size: 10px;">node, firebase</a> <a href="/tags/node-vue/" style="font-size: 10px;">node, vue</a> <a href="/tags/vega-lite-graph-javascript-chart-library/" style="font-size: 10px;">vega-lite, graph, javascript-chart-library</a> <a href="/tags/wix-간편하게-홈페이지-만들기-불리오/" style="font-size: 10px;">wix, 간편하게 홈페이지 만들기, 불리오</a> <a href="/tags/zeplin-제플린-단위/" style="font-size: 10px;">zeplin, 제플린, 단위</a> <a href="/tags/zeplin-제플린-숫자-1x-2x/" style="font-size: 10px;">zeplin, 제플린, 숫자, 1x, 2x</a> <a href="/tags/zeplin-제플린-오류-대지-PsCC/" style="font-size: 10px;">zeplin, 제플린, 오류, 대지, PsCC</a> <a href="/tags/디자이너-현타/" style="font-size: 10px;">디자이너, 현타</a>
         </div>
     </div>
 
