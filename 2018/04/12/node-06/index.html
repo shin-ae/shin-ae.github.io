@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="shin">
 <meta property="og:description" content="사실 제가 다 알아서 진도를 나가는 것은 아닌 것 같습니다. 언제나 그랬듯이 지나고 나면 알게 되겠지 라는 마음으로 꾸준히 하고 있습니다. firebase에서 데이터를 가져오기 위해 필요했던 작업들입니다.내용이 많았던 페이지들의 라우터를 분리하고 필요한 라이브러리를 설치하는 등의 추가 작업이 필요했습니다.  1. firebase 커넥션 분2. 테스트 페이지">
 <meta property="og:image" content="https://kr.vuejs.org/images/logo.png">
-<meta property="og:updated_time" content="2018-04-22T06:43:56.023Z">
+<meta property="og:updated_time" content="2018-04-22T06:48:04.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue에서 firebase 데이터 가져오기">
 <meta name="twitter:description" content="사실 제가 다 알아서 진도를 나가는 것은 아닌 것 같습니다. 언제나 그랬듯이 지나고 나면 알게 되겠지 라는 마음으로 꾸준히 하고 있습니다. firebase에서 데이터를 가져오기 위해 필요했던 작업들입니다.내용이 많았던 페이지들의 라우터를 분리하고 필요한 라이브러리를 설치하는 등의 추가 작업이 필요했습니다.  1. firebase 커넥션 분2. 테스트 페이지">
@@ -297,7 +297,7 @@ ga('send', 'pageview');
 <h3 id="8-정리된-데이터를-html-안에-넣기-1"><a href="#8-정리된-데이터를-html-안에-넣기-1" class="headerlink" title="8. 정리된 데이터를 html 안에 넣기"></a>8. 정리된 데이터를 html 안에 넣기</h3><p><code>member.html</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>members<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"listSet"</span>&gt;</span>list<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">v-for</span>=<span class="string">"item in list"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"getData"</span>&gt;</span>dataTest<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span>&#123;&#123;shin.id&#125;&#125;<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span>&#123;&#123;shin.password&#125;&#125;<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span>&#123;&#123;shin.fullName&#125;&#125;<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>이렇게 하고 실행시켜줍니다.<br>vue 레벨에서 app.js를 실행시켜주고<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node .\app.js</div></pre></td></tr></table></figure></p>
 <p>vue &gt; front 에서 vue실행.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
-<p>그럼 다음과 같은 결과를 보실 수 있습니다.<br><img src="/css/images/members.PNG" alt="으아아아아아 어려우엉ㅜㅜ"></p>
+<p>그럼 다음과 같은 결과를 보실 수 있습니다.<br><img src="/css/images/members.png" alt="으아아아아아 어려우엉ㅜㅜ"></p>
 
         
         </div>
@@ -308,7 +308,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://shin-ae.github.io/2018/04/12/node-06/" data-id="cjgag5wop0024a8va6a0otuzn" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://shin-ae.github.io/2018/04/12/node-06/" data-id="cjgagb60r0024tkvanleqnd5n" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
